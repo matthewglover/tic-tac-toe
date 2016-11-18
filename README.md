@@ -2,7 +2,7 @@
 
 ## What
 
-A Tic Tac Toe application built in React
+A Tic Tac Toe application
 
 ## Requirements
 
