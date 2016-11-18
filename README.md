@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/matthewglover/tic-tac-toe.svg?branch=master)](https://travis-ci.org/matthewglover/tic-tac-toe) [![Coverage Status](https://coveralls.io/repos/github/matthewglover/tic-tac-toe/badge.svg?branch=master)](https://coveralls.io/github/matthewglover/tic-tac-toe?branch=master)
+
 # Tic Tac Toe
 
 ## What
