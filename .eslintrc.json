@@ -3,5 +3,10 @@
   "parser": "babel-eslint",
   "env": {
     "node": true
+  },
+  "globals": {
+    "MoveType": true,
+    "BoardValue": true,
+    "Board": true
   }
 }

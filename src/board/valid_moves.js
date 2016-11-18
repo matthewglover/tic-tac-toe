@@ -1,17 +1,5 @@
 // @flow
 
-type MoveType =
-  1 | 2;
-
-type BoardValue =
-  MoveType | 0;
-
-type Board = [
-  BoardValue, BoardValue, BoardValue,
-  BoardValue, BoardValue, BoardValue,
-  BoardValue, BoardValue, BoardValue,
-];
-
 
 const otherType = (moveType: MoveType): MoveType =>
   (moveType === 1
