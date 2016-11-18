@@ -23,8 +23,9 @@
   },
   "homepage": "https://github.com/matthewglover/tic-tac-toe#readme",
   "devDependencies": {
-    "babel-register": "^6.18.0",
     "babel-eslint": "^6.1.2",
+    "babel-plugin-transform-flow-comments": "^6.17.0",
+    "babel-register": "^6.18.0",
     "coveralls": "^2.11.14",
     "eslint": "^3.9.0",
     "eslint-config-airbnb": "^12.0.0",
