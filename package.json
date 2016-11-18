@@ -1,0 +1,19 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "## What",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthewglover/tic-tac-toe.git"
+  },
+  "author": "Matt Glover (https://github.com/matthewglover)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/matthewglover/tic-tac-toe/issues"
+  },
+  "homepage": "https://github.com/matthewglover/tic-tac-toe#readme"
+}
