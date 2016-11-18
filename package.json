@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "coverage": "nyc check-coverage --lines 100, --functions 100, --branches 100",
+    "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "lint": "eslint './**/*.js'",
-    "precommit": "npm run lint && nyc npm test && npm run coverage",
+    "precommit": "npm run lint && npm run flow && nyc npm test && npm run coverage",
     "report": "nyc report --reporter=lcov",
-    "test": "tape './test/**/*.js' | tap-dot",
+    "test": "tape -r babel-register './test/**/*.js' | tap-dot",
     "watch": "nodemon -q -x 'npm test'"
   },
   "repository": {
@@ -22,16 +23,22 @@
   },
   "homepage": "https://github.com/matthewglover/tic-tac-toe#readme",
   "devDependencies": {
+    "babel-register": "^6.18.0",
+    "babel-eslint": "^6.1.2",
     "coveralls": "^2.11.14",
     "eslint": "^3.9.0",
     "eslint-config-airbnb": "^12.0.0",
     "eslint-plugin-import": "^2.1.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.4.1",
+    "flow-bin": "^0.32.0",
     "husky": "^0.11.9",
     "nyc": "^8.3.2",
     "rimraf": "^2.5.4",
     "tap-dot": "^1.0.5",
     "tape": "^4.6.2"
+  },
+  "dependencies": {
+    "eslint-plugin-import": "^2.2.0"
   }
 }

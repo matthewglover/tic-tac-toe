@@ -1,20 +1,24 @@
+// @flow
 
-// type MoveType = 1 | 2
-// type BoardValue = 0 | 1 | 2
-// type Board = [
-//  BoardValue, BoardValue, BoardValue,
-//  BoardValue, BoardValue, BoardValue,
-//  BoardValue, BoardValue, BoardValue,
-// ]
+type MoveType =
+  1 | 2;
 
-// otherType :: MoveType -> MoveType
-const otherType = moveType =>
+type BoardValue =
+  MoveType | 0;
+
+type Board = [
+  BoardValue, BoardValue, BoardValue,
+  BoardValue, BoardValue, BoardValue,
+  BoardValue, BoardValue, BoardValue,
+];
+
+
+const otherType = (moveType: MoveType): MoveType =>
   (moveType === 1
     ? 2
     : 1);
 
-// numMoves :: (MoveType, Board) -> Number
-const numMoves = (moveType, board) =>
+const numMoves = (moveType: MoveType, board: Board): number =>
   board.reduce(
     (acc, x) =>
       (x === moveType
@@ -22,8 +26,7 @@ const numMoves = (moveType, board) =>
         : acc),
     0);
 
-// validMoves :: (MoveType, Board) -> Boolean
-const validMoves = (startType, board) => {
+const validMoves = (startType: MoveType, board: Board): boolean => {
   const startMoves = numMoves(startType, board);
   const otherMoves = numMoves(otherType(startType), board);
 
