@@ -1,8 +1,9 @@
+// @flow
 const test = require('tape');
-const {
-  otherType,
-  numMoves,
-  validMoves } = require('../../src/board/valid_moves');
+const mod = require('../../src/board/valid_moves');
+
+const validMoves = mod.default;
+const { otherType, numMoves } = mod;
 
 test('otherType', (t) => {
   t.equal(otherType(1), 2, 'returns 2 with value of 1');

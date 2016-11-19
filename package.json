@@ -24,7 +24,8 @@
   "homepage": "https://github.com/matthewglover/tic-tac-toe#readme",
   "devDependencies": {
     "babel-eslint": "^6.1.2",
-    "babel-plugin-transform-flow-comments": "^6.17.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
     "babel-register": "^6.18.0",
     "coveralls": "^2.11.14",
     "eslint": "^3.9.0",
