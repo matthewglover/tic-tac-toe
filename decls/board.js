@@ -1,11 +1,15 @@
-declare type MoveType =
-  1 | 2;
+declare type Player =
+  1 |
+  2;
 
-declare type BoardValue =
-  MoveType | 0;
+declare type ItemStatus =
+  Player | 0;
 
 declare type Board = [
-  BoardValue, BoardValue, BoardValue,
-  BoardValue, BoardValue, BoardValue,
-  BoardValue, BoardValue, BoardValue,
+  ItemStatus, ItemStatus, ItemStatus,
+  ItemStatus, ItemStatus, ItemStatus,
+  ItemStatus, ItemStatus, ItemStatus,
 ];
+
+declare type Line =
+  [ItemStatus, ItemStatus, ItemStatus];

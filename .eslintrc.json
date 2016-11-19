@@ -5,8 +5,9 @@
     "node": true
   },
   "globals": {
-    "MoveType": true,
-    "BoardValue": true,
-    "Board": true
+    "Player": true,
+    "ItemStatus": true,
+    "Board": true,
+    "Line": true
   }
 }
