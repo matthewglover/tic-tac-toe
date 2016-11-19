@@ -1,12 +1,12 @@
 // @flow
 
 
-const otherType = (moveType: MoveType): MoveType =>
+export const otherType = (moveType: MoveType): MoveType =>
   (moveType === 1
     ? 2
     : 1);
 
-const numMoves = (moveType: MoveType, board: Board): number =>
+export const numMoves = (moveType: MoveType, board: Board): number =>
   board.reduce(
     (acc, x) =>
       (x === moveType
@@ -23,8 +23,4 @@ const validMoves = (startType: MoveType, board: Board): boolean => {
     startMoves === otherMoves + 1);
 };
 
-module.exports = {
-  otherType,
-  numMoves,
-  validMoves,
-};
+export default validMoves;

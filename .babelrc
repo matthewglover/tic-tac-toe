@@ -1,3 +1,6 @@
 {
-  "plugins": ["transform-flow-comments"]
+  "presets": [
+    "react",
+    "es2015"
+  ]
 }
