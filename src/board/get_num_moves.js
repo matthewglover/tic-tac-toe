@@ -1,6 +1,6 @@
 // @flow
 
-const getNumMoves = (player: Player, board: Board): number =>
+const getNumMoves = (board: Board, player: Player): number =>
   board.reduce(
     (acc, x) =>
       (x === player

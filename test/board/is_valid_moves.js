@@ -12,7 +12,7 @@ test('isValidMoves - valid board', (t) => {
     2, 2, 2,
   ];
 
-  t.true(isValidMoves(1, board), 'returns true if equal moves');
+  t.true(isValidMoves(board, 1), 'returns true if equal moves');
   t.end();
 });
 
@@ -23,7 +23,7 @@ test('isValidMoves - invalid board', (t) => {
     2, 2, 2,
   ];
 
-  t.false(isValidMoves(1, board), 'returns false if unequal moves (> 1 difference)');
+  t.false(isValidMoves(board, 1), 'returns false if unequal moves (> 1 difference)');
   t.end();
 });
 
@@ -34,6 +34,6 @@ test('isValidMoves - valid board', (t) => {
     2, 0, 2,
   ];
 
-  t.true(isValidMoves(1, board), 'returns true if one more of start type');
+  t.true(isValidMoves(board, 1), 'returns true if one more of start type');
   t.end();
 });

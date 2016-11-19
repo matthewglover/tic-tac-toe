@@ -1,10 +1,10 @@
 // @flow
 const test = require('tape');
-const mod = require('../../src/board/get_next_move.js');
+const mod = require('../../src/board/get_next_player');
 
-const getNextMove = mod.default;
+const getNextPlayer = mod.default;
 
-test('getNextMove', (t) => {
+test('getNextPlayer', (t) => {
   const board = [
     0, 0, 1,
     1, 0, 1,
@@ -12,13 +12,13 @@ test('getNextMove', (t) => {
   ];
 
   t.equal(
-    getNextMove(1, board),
+    getNextPlayer(board, 1),
     1,
     'returns next player to play');
   t.end();
 });
 
-test('getNextMove', (t) => {
+test('getNextPlayer', (t) => {
   const board = [
     0, 0, 1,
     1, 0, 1,
@@ -26,13 +26,13 @@ test('getNextMove', (t) => {
   ];
 
   t.equal(
-    getNextMove(2, board),
+    getNextPlayer(board, 2),
     2,
     'returns next player to play');
   t.end();
 });
 
-test('getNextMove', (t) => {
+test('getNextPlayer', (t) => {
   const board = [
     0, 0, 1,
     1, 1, 1,
@@ -40,7 +40,7 @@ test('getNextMove', (t) => {
   ];
 
   t.equal(
-    getNextMove(1, board),
+    getNextPlayer(board, 1),
     2,
     'returns next player to play');
   t.end();

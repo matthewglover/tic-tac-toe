@@ -3,14 +3,14 @@ import getOtherPlayer from './get_other_player';
 import getNumMoves from './get_num_moves';
 
 
-const getNextMove = (startPlayer: Player, board: Board): Player => {
+const getNextPlayer = (board: Board, startPlayer: Player): Player => {
   const otherPlayer = getOtherPlayer(startPlayer);
-  const startMoves = getNumMoves(startPlayer, board);
-  const otherMoves = getNumMoves(otherPlayer, board);
+  const startMoves = getNumMoves(board, startPlayer);
+  const otherMoves = getNumMoves(board, otherPlayer);
 
   return startMoves === otherMoves
     ? startPlayer
     : otherPlayer;
 };
 
-export default getNextMove;
+export default getNextPlayer;

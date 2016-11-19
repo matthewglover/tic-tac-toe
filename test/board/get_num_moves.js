@@ -12,6 +12,6 @@ test('getNumMoves', (t) => {
     2, 2, 2,
   ];
 
-  t.equal(getNumMoves(1, board), 3, 'returns number of specified player\'s moves');
+  t.equal(getNumMoves(board, 1), 3, 'returns number of specified player\'s moves');
   t.end();
 });
