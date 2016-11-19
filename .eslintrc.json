@@ -9,6 +9,7 @@
     "Square": true,
     "ItemStatus": true,
     "Board": true,
-    "Line": true
+    "Line": true,
+    "TreeNode": true
   }
 }
