@@ -2,9 +2,9 @@
 import getOtherPlayer from './get_other_player';
 import getNumMoves from './get_num_moves';
 
-const isValidMoves = (playerStart: Player, board: Board): boolean => {
-  const startMoves = getNumMoves(playerStart, board);
-  const otherMoves = getNumMoves(getOtherPlayer(playerStart), board);
+const isValidMoves = (board: Board, playerStart: Player): boolean => {
+  const startMoves = getNumMoves(board, playerStart);
+  const otherMoves = getNumMoves(board, getOtherPlayer(playerStart));
 
   return (
     startMoves === otherMoves ||
