@@ -43,7 +43,7 @@ const getBestMove =
 
 const miniMax =
   (board: Board, player: Player, isMax: boolean = true, depth: number = 0): MinMaxResult => {
-    const moves = getNextMoves(board, player);
+    const moves = getNextMoves(board);
 
     return (moves.length === 0)
       ? [getBoardScore(board, player, isMax, depth), board]

@@ -12,7 +12,7 @@ test('getNextMoves', (t) => {
   ];
 
   t.deepEqual(
-    getNextMoves(board, 2),
+    getNextMoves(board),
     [
       [
         2, 2, 1,
@@ -38,7 +38,7 @@ test('getNextMoves', (t) => {
   ];
 
   t.deepEqual(
-    getNextMoves(board, 1),
+    getNextMoves(board),
     [
       [
         2, 1, 0,
@@ -68,7 +68,7 @@ test('getNextMoves', (t) => {
   ];
 
   t.deepEqual(
-    getNextMoves(board, 1),
+    getNextMoves(board),
     [],
     'returns all possible next moves');
   t.end();
@@ -82,7 +82,7 @@ test('getNextMoves', (t) => {
   ];
 
   t.deepEqual(
-    getNextMoves(board, 1).length,
+    getNextMoves(board).length,
     9,
     'returns all possible next moves');
   t.end();
@@ -96,7 +96,7 @@ test('getNextMoves', (t) => {
   ];
 
   t.deepEqual(
-    getNextMoves(board, 1),
+    getNextMoves(board),
     [],
     'returns empty array if no possible moves');
   t.end();
