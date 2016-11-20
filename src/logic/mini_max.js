@@ -14,7 +14,7 @@ const getBoardScore = (board: Board, isMax: boolean, depth: number): Score => {
   return -10 + depth;
 };
 
-const isBetterMove = (baseScore, newScore, isMax) =>
+const isBetterMove = (baseScore: number, newScore: number, isMax: boolean): boolean =>
   (isMax
     ? baseScore < newScore
     : baseScore > newScore);
