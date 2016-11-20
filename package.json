@@ -9,7 +9,7 @@
     "lint": "eslint './**/*.js'",
     "precommit": "npm run lint && npm run flow && nyc npm test && npm run coverage",
     "report": "nyc report --reporter=lcov",
-    "test": "tape -r babel-register './test/**/*.js' | tap-dot",
+    "test": "tape -r babel-register './test/**/*.js'",
     "watch": "nodemon -q -x 'npm test'"
   },
   "repository": {
