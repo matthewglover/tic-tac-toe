@@ -118,7 +118,7 @@ test('miniMax', (t) => {
   t.deepEqual(
     miniMax(board, 2),
     [
-      10,
+      9,
       [
         2, 1, 2,
         1, 2, 1,
@@ -139,7 +139,7 @@ test('miniMax', (t) => {
   t.deepEqual(
     miniMax(board, 2),
     [
-      10,
+      9,
       [
         2, 1, 2,
         1, 2, 1,
@@ -147,5 +147,47 @@ test('miniMax', (t) => {
       ],
     ],
     'returns winning move if possible');
+  t.end();
+});
+
+test('miniMax', (t) => {
+  const board = [
+    2, 1, 2,
+    1, 2, 0,
+    0, 0, 1,
+  ];
+
+  t.deepEqual(
+    miniMax(board, 1),
+    [
+      0,
+      [
+        2, 1, 2,
+        1, 2, 0,
+        1, 0, 1,
+      ],
+    ],
+    'returns not losing move if no winning move');
+  t.end();
+});
+
+test('miniMax', (t) => {
+  const board = [
+    2, 0, 1,
+    0, 0, 1,
+    0, 0, 0,
+  ];
+
+  t.deepEqual(
+    miniMax(board, 2),
+    [
+      -6,
+      [
+        2, 0, 1,
+        0, 0, 1,
+        0, 0, 2,
+      ],
+    ],
+    'returns move to prolong game even where fatal');
   t.end();
 });
