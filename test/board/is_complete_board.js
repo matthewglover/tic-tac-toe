@@ -36,3 +36,14 @@ test('isCompleteBoard', (t) => {
   t.false(isCompleteBoard(board), 'returns false if incomplete board');
   t.end();
 });
+
+test('isCompleteBoard', (t) => {
+  const board = [
+    2, 1, 2,
+    2, 1, 1,
+    1, 2, 1,
+  ];
+
+  t.true(isCompleteBoard(board), 'returns true if complete board');
+  t.end();
+});

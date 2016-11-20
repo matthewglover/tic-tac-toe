@@ -63,7 +63,7 @@ test('createTree', (t) => {
   t.end();
 });
 
-test('createTree', (t) => {
+test.skip('createTree', (t) => {
   const tree = createTree([
     0, 0, 0,
     0, 0, 0,

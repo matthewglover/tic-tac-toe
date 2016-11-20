@@ -10,6 +10,8 @@
     "ItemStatus": true,
     "Board": true,
     "Line": true,
+    "Score": true,
+    "MinMaxResult": true,
     "TreeNode": true
   }
 }
