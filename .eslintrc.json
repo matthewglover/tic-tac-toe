@@ -11,7 +11,7 @@
     "Board": true,
     "Line": true,
     "Score": true,
-    "MinMaxResult": true,
+    "MiniMaxResult": true,
     "TreeNode": true
   }
 }

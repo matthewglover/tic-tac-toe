@@ -23,7 +23,7 @@ const isBetterMove = (baseScore: number, newScore: number, isMax: boolean): bool
 /* eslint-disable no-use-before-define */
 const bestResultReducer =
   (player: Player, isMax: boolean, depth: number) =>
-  ([bestScore, bestBoard]: MinMaxResult, newBoard: Board): MinMaxResult => {
+  ([bestScore, bestBoard]: MiniMaxResult, newBoard: Board): MiniMaxResult => {
     const [newScore] = miniMax(newBoard, !isMax, depth);
 
     return isBetterMove(bestScore, newScore, isMax)
@@ -32,24 +32,23 @@ const bestResultReducer =
   };
 
 const getBestMove =
-  (moves: Array<Board>, isMax: boolean, depth: number): MinMaxResult => {
+  (moves: Array<Board>, isMax: boolean, depth: number): MiniMaxResult => {
     const [firstMove, ...otherMoves] = moves;
-    const player = getNextPlayer(firstMove);
+    const [firstScore] = miniMax(firstMove, !isMax, depth);
+    const reducer = bestResultReducer(getNextPlayer(firstMove), isMax, depth);
 
     // NOTE: explicitly passing default accumulator is required for Flow type parser
-    return otherMoves.reduce(
-      bestResultReducer(player, isMax, depth + 1),
-      [miniMax(firstMove, !isMax, depth + 1)[0], firstMove]);
+    return otherMoves.reduce(reducer, [firstScore, firstMove]);
   };
 /* eslint-enable no-use-before-define */
 
 const miniMax =
-  (board: Board, isMax: boolean = true, depth: number = 0): MinMaxResult => {
+  (board: Board, isMax: boolean = true, depth: number = 0): MiniMaxResult => {
     const moves = getNextMoves(board);
 
     return (moves.length === 0)
       ? [getBoardScore(board, isMax, depth), board]
-      : getBestMove(moves, isMax, depth);
+      : getBestMove(moves, isMax, depth + 1);
   };
 
 export default miniMax;
