@@ -5,17 +5,17 @@ const miniMax = mod.default;
 
 test('miniMax', (t) => {
   const board = [
-    2, 1, 1,
+    2, 1, 2,
     2, 1, 2,
     0, 1, 1,
   ];
 
   t.deepEqual(
-    miniMax(board, 1),
+    miniMax(board),
     [
       10,
       [
-        2, 1, 1,
+        2, 1, 2,
         2, 1, 2,
         0, 1, 1,
       ],
@@ -26,7 +26,7 @@ test('miniMax', (t) => {
 
 test('miniMax', (t) => {
   const board = [
-    2, 1, 1,
+    2, 1, 0,
     2, 1, 0,
     2, 0, 1,
   ];
@@ -36,7 +36,7 @@ test('miniMax', (t) => {
     [
       -10,
       [
-        2, 1, 1,
+        2, 1, 0,
         2, 1, 0,
         2, 0, 1,
       ],
@@ -68,17 +68,17 @@ test('miniMax', (t) => {
 
 test('miniMax', (t) => {
   const board = [
-    2, 1, 1,
+    2, 1, 0,
     2, 1, 2,
     0, 1, 1,
   ];
 
   t.deepEqual(
-    miniMax(board, 2, false),
+    miniMax(board, false),
     [
       10,
       [
-        2, 1, 1,
+        2, 1, 0,
         2, 1, 2,
         0, 1, 1,
       ],
@@ -125,7 +125,7 @@ test('miniMax', (t) => {
         1, 0, 2,
       ],
     ],
-    'returns winning move if possible');
+    'returns winning move if possible (in fewest possible moves)');
   t.end();
 });
 
@@ -146,7 +146,7 @@ test('miniMax', (t) => {
         2, 0, 1,
       ],
     ],
-    'returns winning move if possible');
+    'returns winning move if possible (in fewest possible moves)');
   t.end();
 });
 
