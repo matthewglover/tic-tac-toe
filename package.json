@@ -4,14 +4,16 @@
   "description": "Tic Tac Toe Application built with JavaScript and Flow",
   "main": "index.js",
   "scripts": {
+    "build": "webpack --config ./build_config/webpack.production.config.js --progress -p",
     "coverage": "nyc check-coverage --lines 100, --functions 100, --branches 100",
+    "dev": "webpack-dev-server --config ./build_config/webpack.development.config.js",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "docs:build": "documentation build ./src/**/*.js -f md > docs.md",
     "lint": "eslint './**/*.js'",
     "precommit": "npm run lint && npm run flow && nyc npm test && npm run coverage && npm run docs:build",
     "report": "nyc report --reporter=lcov",
     "test": "npm run test:basic | tap-nyan",
-    "test:basic": "tape -r babel-register './test/**/*.js'",
+    "test:basic": "tape -r ./tests.config.js './test/**/*.js'",
     "test:watch": "nodemon -q -x 'npm run test:basic'"
   },
   "repository": {
@@ -25,24 +27,36 @@
   },
   "homepage": "https://github.com/matthewglover/tic-tac-toe#readme",
   "devDependencies": {
-    "babel-eslint": "^6.1.2",
+    "babel": "^6.5.2",
+    "babel-core": "6.13.2",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "6.2.10",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
     "babel-register": "^6.18.0",
     "coveralls": "^2.11.14",
+    "css-loader": "0.23.1",
     "documentation": "^4.0.0-beta.18",
-    "eslint": "^3.9.0",
-    "eslint-config-airbnb": "^12.0.0",
-    "eslint-plugin-import": "^2.1.0",
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-react": "^6.4.1",
+    "eslint-plugin-react": "^6.8.0",
     "flow-bin": "^0.32.0",
+    "html-webpack-plugin": "^2.24.1",
     "husky": "^0.11.9",
     "nyc": "^8.3.2",
+    "postcss-loader": "0.9.1",
     "rimraf": "^2.5.4",
+    "style-loader": "0.13.1",
     "tap-dot": "^1.0.5",
     "tap-nyan": "^1.1.0",
-    "tape": "^4.6.2"
+    "tape": "^4.6.2",
+    "webpack": "2.2.0-rc.2",
+    "webpack-dev-server": "2.2.0-rc.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  }
 }

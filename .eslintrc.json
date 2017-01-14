@@ -2,15 +2,18 @@
   "extends": "airbnb",
   "parser": "babel-eslint",
   "env": {
-    "node": true
+    "node": true,
+    "browser": true
   },
   "globals": {
     "Player": true,
-    "Square": true,
     "ItemStatus": true,
     "Board": true,
     "Line": true,
     "Score": true,
     "MiniMaxResult": true
+  },
+  "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   }
 }
