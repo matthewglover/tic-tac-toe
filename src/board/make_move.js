@@ -1,6 +1,6 @@
 // @flow
 
-const makeMove = (board: Board, player: Player, square: Square): Board =>
+const makeMove = (board: Board, player: Player, square: number): Board =>
   Array.from(
     { length: 9 },
     (_, i) =>

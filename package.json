@@ -41,6 +41,5 @@
     "tape": "^4.6.2"
   },
   "dependencies": {
-    "eslint-plugin-import": "^2.2.0"
   }
 }
