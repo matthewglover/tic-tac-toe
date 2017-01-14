@@ -59,6 +59,8 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-hot-loader": "next",
-    "rebass": "^0.3.3"
+    "react-redux": "latest",
+    "rebass": "^0.3.3",
+    "redux": "latest"
   }
 }

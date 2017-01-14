@@ -13,7 +13,10 @@
     "Score": true,
     "MiniMaxResult": true,
     "React$Element": true,
-    "ReactClass": true
+    "ReactClass": true,
+    "AppReducer": true,
+    "Action": true,
+    "SquareProps": true
   },
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
