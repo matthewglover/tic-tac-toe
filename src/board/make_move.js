@@ -1,5 +1,8 @@
 // @flow
 
+/**
+ * Get a new board with the specified move made
+ */
 const makeMove = (board: Board, player: Player, square: number): Board =>
   Array.from(
     { length: 9 },

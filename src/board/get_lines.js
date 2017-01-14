@@ -1,5 +1,8 @@
 // @flow
 
+/**
+ * Get rows from a board
+ */
 export const getRows = (board: Board): Array<Line> => {
   const [
     a, b, c,
@@ -14,7 +17,9 @@ export const getRows = (board: Board): Array<Line> => {
   ];
 };
 
-
+/**
+ * Get columns from a board
+ */
 export const getCols = (board: Board): Array<Line> => {
   const [
     a, b, c,
@@ -30,6 +35,9 @@ export const getCols = (board: Board): Array<Line> => {
 };
 
 
+/**
+ * Get diagnal lines from a board
+ */
 export const getDiags = (board: Board): Array<Line> => {
   /* eslint-disable no-unused-vars */
   const [
@@ -45,6 +53,9 @@ export const getDiags = (board: Board): Array<Line> => {
   ];
 };
 
+/**
+ * Get all lines from a board
+ */
 const getLines = (board: Board): Array<Line> =>
   [
     ...getRows(board),

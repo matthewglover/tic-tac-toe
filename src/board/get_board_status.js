@@ -4,6 +4,9 @@ import getLineStatus from './get_line_status';
 
 const eq = status => value => value === status;
 
+/**
+ * Get board status - returning the winning player or zero if no winner
+ */
 const getBoardStatus = (board: Board): ItemStatus => {
   const lineStatuses =
     getLines(board)

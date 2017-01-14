@@ -1,5 +1,8 @@
 // @flow
 
+/**
+ * Get line status - returning the winning player or zero if no winner
+ */
 const getLineStatus = (line: Line): ItemStatus => {
   const [a, b, c] = line;
 

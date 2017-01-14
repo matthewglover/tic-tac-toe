@@ -16,3 +16,15 @@ A Tic Tac Toe application
 - The user can choose which player goes first
 
 - The computer should never lose and should win whenever possible
+
+## Why
+
+Why not?
+
+## How
+
+Clone the repo and run `npm install` or `yarn install`.
+
+To run the test suite run `npm test`.
+
+For more info see the [docs](docs.md)
