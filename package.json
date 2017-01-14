@@ -1,17 +1,18 @@
 {
   "name": "tic-tac-toe",
   "version": "1.0.0",
-  "description": "## What",
+  "description": "Tic Tac Toe Application built with JavaScript and Flow",
   "main": "index.js",
   "scripts": {
     "coverage": "nyc check-coverage --lines 100, --functions 100, --branches 100",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "docs:build": "documentation build ./src/**/*.js -f md > docs.md",
     "lint": "eslint './**/*.js'",
-    "precommit": "npm run lint && npm run flow && nyc npm test && npm run coverage",
+    "precommit": "npm run lint && npm run flow && nyc npm test && npm run coverage && npm run docs:build",
     "report": "nyc report --reporter=lcov",
-    "test": "tape -r babel-register './test/**/*.js'",
-    "watch": "nodemon -q -x 'npm test'"
+    "test": "npm run test:basic | tap-nyan",
+    "test:basic": "tape -r babel-register './test/**/*.js'",
+    "test:watch": "nodemon -q -x 'npm run test:basic'"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,7 @@
     "nyc": "^8.3.2",
     "rimraf": "^2.5.4",
     "tap-dot": "^1.0.5",
+    "tap-nyan": "^1.1.0",
     "tape": "^4.6.2"
   },
   "dependencies": {}
