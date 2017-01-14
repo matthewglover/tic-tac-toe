@@ -1,7 +1,5 @@
-import React from 'react';
+import './page_styles.css';
+import App from './components/app';
 import render from './render';
-
-const App = () =>
-  <div>Hello World</div>;
 
 render(App);

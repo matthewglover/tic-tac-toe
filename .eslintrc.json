@@ -11,7 +11,9 @@
     "Board": true,
     "Line": true,
     "Score": true,
-    "MiniMaxResult": true
+    "MiniMaxResult": true,
+    "React$Element": true,
+    "ReactClass": true
   },
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
