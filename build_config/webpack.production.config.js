@@ -4,7 +4,11 @@ const shared = require('./shared');
 module.exports = {
   entry: {
     main: './main.js',
-    vendor: ['react', 'react-dom'],
+    vendor: [
+      'react',
+      'react-dom',
+      'react-hot-loader',
+    ],
   },
 
   output: {
