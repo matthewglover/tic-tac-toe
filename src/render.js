@@ -1,9 +1,10 @@
+// @flow
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 
 
-const render = (Component) => {
+const render = (Component: ReactClass<*>): void => {
   ReactDOM.render(
     <AppContainer>
       <Component />
