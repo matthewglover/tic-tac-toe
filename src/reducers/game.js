@@ -1,6 +1,6 @@
 // @flow
 
-const gameREducer = (gameType: GameType = null, action: Action): GameType => {
+const gameReducer = (gameType: GameType = null, action: Action): GameType => {
   switch (action.type) {
     case 'SET_NEW_GAME':
       return action.gameType;
@@ -9,7 +9,7 @@ const gameREducer = (gameType: GameType = null, action: Action): GameType => {
   }
 };
 
-export default gameREducer;
+export default gameReducer;
 
 export const getPlayerType = (gameType: GameType, activePlayer: Player) =>
   (gameType === null
