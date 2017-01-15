@@ -6,14 +6,14 @@ import * as actionCreators from '../action_creators';
 type SquareValue =
   'X' | 'O' | null
 
-type SquareProps = {
+type Props = {
   clickHandler?: Function,
   value: SquareValue,
 }
 
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 
-const Square = ({ clickHandler, value }: SquareProps): React$Element<*> =>
+const Square = ({ clickHandler, value }: Props): React$Element<*> =>
   <div className="square" onClick={clickHandler}>{value}</div>;
 
 

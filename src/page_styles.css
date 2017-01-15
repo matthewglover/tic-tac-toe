@@ -4,7 +4,6 @@ body {
   background-color: LightSlateGray;
   font-family: Helvetica, Arial, sans-serif;
   color: white;
-  font-size: 50px;
 }
 
 #container {
@@ -39,6 +38,7 @@ body {
   border-color: white;
   box-sizing: border-box;
   cursor: pointer;
+  font-size: 50px;
 }
 
 .square:nth-of-type(2),  .square:nth-of-type(5), .square:nth-of-type(8) {

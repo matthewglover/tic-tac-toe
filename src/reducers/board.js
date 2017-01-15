@@ -2,7 +2,7 @@
 import makeMove from '../board/make_move';
 import getNextPlayer from '../board/get_next_player';
 
-const EMPTY_BOARD =
+const EMPTY_BOARD: Board =
   Array.from({ length: 9 }, () => 0);
 
 const boardReducer = (board: Board = EMPTY_BOARD, action: Action): Board => {
