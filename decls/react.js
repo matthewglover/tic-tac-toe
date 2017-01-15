@@ -25,7 +25,11 @@ declare type SetBoardAction = {
   board: Board
 }
 
+declare type ResetAction = {
+  type: 'RESET'
+}
+
 declare type Action =
-  MoveAction | GameStartAction | SetBoardAction
+  MoveAction | GameStartAction | SetBoardAction | ResetAction
 
 declare type AppReducer = (state: AppState, action: Action) => AppState

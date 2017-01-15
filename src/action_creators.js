@@ -22,3 +22,9 @@ export const setGameCompleted = completed =>
     type: 'SET_GAME_COMPLETED',
     completed,
   });
+
+
+export const reset = () =>
+  ({
+    type: 'RESET',
+  });
