@@ -15,6 +15,7 @@ const completedGame = (action$, store) =>
   action$
     .filter(any(isMoveAction, isSetBoardAction))
     .filter(isGameOver(store))
+    .delay(1000)
     .map(setCompleted);
 
 export default completedGame;
