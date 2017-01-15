@@ -8,6 +8,11 @@ module.exports = {
       'react',
       'react-dom',
       'react-hot-loader',
+      'rxjs',
+      'redux-observable',
+      'react-router',
+      'redux',
+      'react-redux',
     ],
   },
 
