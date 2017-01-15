@@ -63,6 +63,8 @@
     "react-redux": "latest",
     "react-router": "next",
     "rebass": "^0.3.3",
-    "redux": "latest"
+    "redux": "latest",
+    "redux-observable": "^0.12.2",
+    "rxjs": "^5.0.3"
   }
 }
