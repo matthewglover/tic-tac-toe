@@ -1,6 +1,6 @@
 // @flow
 
-const boardReducer = (gameType: GameType = null, action: Action): GameType => {
+const gameREducer = (gameType: GameType = null, action: Action): GameType => {
   switch (action.type) {
     case 'SET_NEW_GAME':
       return action.gameType;
@@ -9,9 +9,9 @@ const boardReducer = (gameType: GameType = null, action: Action): GameType => {
   }
 };
 
-export default boardReducer;
+export default gameREducer;
 
 export const getPlayerType = (gameType: GameType, activePlayer: Player) =>
   (gameType === null
-    ? null
-    : gameType.split('_')[activePlayer - 1]);
+      ? null
+      : gameType.split('_')[activePlayer - 1]);

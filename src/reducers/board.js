@@ -9,6 +9,8 @@ const boardReducer = (board: Board = EMPTY_BOARD, action: Action): Board => {
   switch (action.type) {
     case 'MOVE':
       return makeMove(board, getNextPlayer(board), action.position);
+    case 'SET_BOARD':
+      return action.board;
     default:
       return board;
   }

@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 
 export const move = position =>
   ({
@@ -10,4 +9,10 @@ export const setNewGame = gameType =>
   ({
     type: 'SET_NEW_GAME',
     gameType,
+  });
+
+export const setBoard = board =>
+  ({
+    type: 'SET_BOARD',
+    board,
   });

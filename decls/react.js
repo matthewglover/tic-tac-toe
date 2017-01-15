@@ -4,7 +4,7 @@ declare type AppState = {
   game: GameType
 }
 
-declare type BoardAction = {
+declare type MoveAction = {
   type: 'MOVE',
   position: number,
 }
@@ -20,7 +20,12 @@ declare type GameStartAction = {
   gameType: GameType
 }
 
+declare type SetBoardAction = {
+  type: 'SET_BOARD',
+  board: Board
+}
+
 declare type Action =
-  BoardAction | GameStartAction | Object
+  MoveAction | GameStartAction | SetBoardAction
 
 declare type AppReducer = (state: AppState, action: Action) => AppState
