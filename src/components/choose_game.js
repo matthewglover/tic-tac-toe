@@ -1,6 +1,13 @@
 // @flow
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import GameLink from './game_link';
+import * as fromActionCreators from '../action_creators';
+
+
+type PropTypes = {
+  dispatch: Function
+}
 
 const GAME_LINKS = [
   { gameType: 'HUMAN_HUMAN', description: 'Human vs Human' },
@@ -9,13 +16,25 @@ const GAME_LINKS = [
   { gameType: 'COMPUTER_COMPUTER', description: 'Computer vs Computer' },
 ];
 
-const ChooseGame = () =>
-  <div>Choose a game
+class ChooseGame extends Component {
 
-    <ul>
-      {GAME_LINKS.map((props, i) =>
-        <GameLink key={i} {...props} />)}
-    </ul>
-  </div>;
+  componentDidMount() {
+    const dispatch = this.props.dispatch;
 
-export default ChooseGame;
+    dispatch(fromActionCreators.reset());
+  }
+
+  props: PropTypes
+
+  render() {
+    return (
+      <div>Choose a game
+        <ul>
+          {GAME_LINKS.map((props, i) =>
+            <GameLink key={i} {...props} />)}
+        </ul>
+      </div>);
+  }
+}
+
+export default connect()(ChooseGame);

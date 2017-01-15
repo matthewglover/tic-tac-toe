@@ -2,6 +2,8 @@
 
 const gameReducer = (gameType: GameType = null, action: Action): GameType => {
   switch (action.type) {
+    case 'RESET':
+      return null;
     case 'SET_NEW_GAME':
       return action.gameType;
     default:
