@@ -15,3 +15,5 @@ const boardReducer = (board: Board = EMPTY_BOARD, action: Action): Board => {
 };
 
 export default boardReducer;
+
+export const getActivePlayer = getNextPlayer;

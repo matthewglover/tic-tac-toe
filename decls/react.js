@@ -1,6 +1,7 @@
 
 declare type AppState = {
   board: Board,
+  game: GameType
 }
 
 declare type BoardAction = {
@@ -11,9 +12,12 @@ declare type BoardAction = {
 declare type GameType =
   null | 'HUMAN_HUMAN' | 'HUMAN_COMPUTER' | 'COMPUTER_HUMAN' | 'COMPUTER_COMPUTER'
 
+declare type PlayerType =
+  'HUMAN' | 'COMPUTER'
+
 declare type GameStartAction = {
   type: 'SET_NEW_GAME',
-  gameType: GameType,
+  gameType: GameType
 }
 
 declare type Action =
