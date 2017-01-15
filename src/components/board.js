@@ -6,7 +6,7 @@ const generateSquares = (): Array<React$Element<*>> =>
   Array.from(
     { length: 9 },
     (_, i) =>
-      <Square key={i} pos={i} />);
+      <Square key={i} position={i} />);
 
 const Board = (): React$Element<*> =>
   <div className="board">
