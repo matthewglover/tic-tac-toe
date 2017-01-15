@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from 'react';
+import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import { setNewGame } from '../action_creators';
 import Board from './board';
@@ -11,6 +12,7 @@ type Props = {
     },
   },
   dispatch: Function,
+  gameCompleted: boolean
 }
 
 class Game extends Component {
@@ -25,8 +27,15 @@ class Game extends Component {
   props: Props
 
   render(): React$Element<*> {
-    return <Board />;
+    return (this.props.gameCompleted
+      ? <Redirect to="/game_over" />
+      : <Board />);
   }
 }
 
-export default connect()(Game);
+const mapStateToProps = state =>
+  ({
+    gameCompleted: state.gameCompleted,
+  });
+
+export default connect(mapStateToProps)(Game);
