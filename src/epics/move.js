@@ -43,7 +43,7 @@ const move = (action$, store) =>
   action$
     .filter(any(isMoveAction, isStartGameAction, isSetBoardAction))
     .filter(compose(isComputerPlayer, getActivePlayerType(store)))
-    .delay(100)
+    .delay(500)
     .map(getNextBoard(store))
     .map(fromActionCreators.setBoard);
 
