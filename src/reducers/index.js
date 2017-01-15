@@ -1,7 +1,7 @@
 // @flow
 import { combineReducers } from 'redux';
-import board from './board';
-import game from './game';
+import board, * as fromBoard from './board';
+import game, * as fromGame from './game';
 
 const rootReducer: AppReducer =
   combineReducers({
@@ -10,3 +10,9 @@ const rootReducer: AppReducer =
   });
 
 export default rootReducer;
+
+export const isHumanPlayer = (state: AppState): boolean => {
+  const activePlayer = fromBoard.getActivePlayer(state.board);
+
+  return fromGame.getPlayerType(state.game, activePlayer) === 'HUMAN';
+};

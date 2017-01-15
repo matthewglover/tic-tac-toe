@@ -2,6 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../action_creators';
+import * as fromReducers from '../reducers';
 
 type SquareValue =
   'X' | 'O' | null
@@ -25,15 +26,17 @@ const convertStatusToValue = (status: ItemStatus): SquareValue => {
   }
 };
 
-const provisionClickHandler = (status, position, action) =>
-  (status === 0
-    ? () => action(position)
+const provisionClickHandler = ({ squareStatus, position, move, isHumanPlayer }) =>
+  (isHumanPlayer && squareStatus === 0
+    ? () => move(position)
     : undefined);
 
-const mergeProps = ({ board }, { move }, { position }): SquareProps => {
-  const status = board[position];
-  const value = convertStatusToValue(status);
-  const clickHandler = provisionClickHandler(status, position, move);
+const mergeProps = (state, { move }, { position }): Props => {
+  const squareStatus = state.board[position];
+  const value = convertStatusToValue(squareStatus);
+  const isHumanPlayer = fromReducers.isHumanPlayer(state);
+
+  const clickHandler = provisionClickHandler({ squareStatus, position, move, isHumanPlayer });
 
   return {
     value,
