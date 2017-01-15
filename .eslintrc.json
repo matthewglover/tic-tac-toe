@@ -16,7 +16,8 @@
     "ReactClass": true,
     "AppReducer": true,
     "Action": true,
-    "SquareProps": true
+    "SquareProps": true,
+    "GameType": true
   },
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]

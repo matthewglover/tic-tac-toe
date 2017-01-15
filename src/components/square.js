@@ -3,20 +3,37 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../action_creators';
 
+type SquareValue =
+  'X' | 'O' | null
+
+type SquareProps = {
+  clickHandler?: Function,
+  value: SquareValue,
+}
+
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 
-const SimpleSquare = ({ clickHandler, position }: SquareProps): React$Element<*> =>
-  <div className="square" onClick={clickHandler}>{position}</div>;
+const Square = ({ clickHandler, value }: SquareProps): React$Element<*> =>
+  <div className="square" onClick={clickHandler}>{value}</div>;
 
 
-const mapStateToProps = state => state;
+const convertStatusToValue = (status: ItemStatus): SquareValue => {
+  switch (status) {
+    case 1: return 'X';
+    case 2: return 'O';
+    default: return null;
+  }
+};
 
-const mergeProps = ({ board }, { move }, { position }) => {
-  const value = board[position];
-
-  const clickHandler = (value === 0
-    ? () => move(position)
+const provisionClickHandler = (status, position, action) =>
+  (status === 0
+    ? () => action(position)
     : undefined);
+
+const mergeProps = ({ board }, { move }, { position }): SquareProps => {
+  const status = board[position];
+  const value = convertStatusToValue(status);
+  const clickHandler = provisionClickHandler(status, position, move);
 
   return {
     value,
@@ -24,6 +41,5 @@ const mergeProps = ({ board }, { move }, { position }) => {
   };
 };
 
-const Square = connect(mapStateToProps, actionCreators, mergeProps)(SimpleSquare);
 
-export default Square;
+export default connect(state => state, actionCreators, mergeProps)(Square);

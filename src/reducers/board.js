@@ -1,15 +1,16 @@
 // @flow
+import makeMove from '../board/make_move';
+import getNextPlayer from '../board/get_next_player';
 
 const EMPTY_BOARD =
   Array.from({ length: 9 }, () => 0);
 
-const boardReducer = (state: Board = EMPTY_BOARD, action: Action): Board => {
+const boardReducer = (board: Board = EMPTY_BOARD, action: Action): Board => {
   switch (action.type) {
-    case 'move':
-      console.log('moving: ', action.boardPosition);  // eslint-disable-line no-console
-      return state;
+    case 'MOVE':
+      return makeMove(board, getNextPlayer(board), action.position);
     default:
-      return state;
+      return board;
   }
 };
 
