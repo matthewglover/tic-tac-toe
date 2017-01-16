@@ -23,7 +23,7 @@ Why not?
 
 ## How
 
-Clone the repo and run `npm install` or `yarn install`.
+Clone the repo and run `npm install`.
 
 To run the test suite run `npm test`.
 
