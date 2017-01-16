@@ -4,15 +4,21 @@ const shared = require('./shared');
 module.exports = {
   entry: {
     main: './main.js',
-    vendor: [
+    vendorReact: [
       'react',
       'react-dom',
       'react-hot-loader',
-      'rxjs',
-      'redux-observable',
-      'react-router',
+    ],
+    vendorRedux: [
       'redux',
       'react-redux',
+    ],
+    vendorReactRouter: [
+      'react-router',
+    ],
+    vendorReduxObservable: [
+      'rxjs',
+      'redux-observable',
     ],
   },
 
@@ -31,7 +37,13 @@ module.exports = {
   plugins: [
     ...shared.plugins,
     new webpack.optimize.CommonsChunkPlugin({
-      names: ['vendor', 'manifest'],
+      names: [
+        'vendorReact',
+        'vendorRedux',
+        'vendorReactRouter',
+        'vendorReduxObservable',
+        'manifest',
+      ],
     }),
   ],
 };
