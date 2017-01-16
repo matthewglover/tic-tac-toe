@@ -25,7 +25,6 @@ module.exports = {
   output: {
     filename: '[chunkhash].[name].js',
     path: shared.dist,
-    publicPath: '/tic-tac-toe',
   },
 
   context: shared.src,
