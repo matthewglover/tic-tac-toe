@@ -23,8 +23,14 @@ Why not?
 
 ## How
 
-Clone the repo and run `npm install`.
+Clone the repo and run `npm install`. Requires Node v6.
 
 To run the test suite run `npm test`.
 
-For more info see the [docs](docs.md)
+To run the app in development mode run `npm run dev`.
+
+To build the app for production run `npm run build`, then run `node server` to run via a local server.
+
+Alternatively view the demo app on heroku [here](https://matthewglover-tic-tac-toe.herokuapp.com).
+
+For more info see the [docs](docs.md).
