@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import { Redirect } from 'react-router';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setNewGame } from '../action_creators';
 import Board from './board';
