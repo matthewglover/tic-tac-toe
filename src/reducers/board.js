@@ -1,6 +1,6 @@
 // @flow
-import makeMove from '../board/make_move';
-import getNextPlayer from '../board/get_next_player';
+import { makeMove, getNextPlayer } from '../board';
+
 
 const EMPTY_BOARD: Board =
   Array.from({ length: 9 }, () => 0);

@@ -1,8 +1,6 @@
 // @flow
 const test = require('tape');
-const mod = require('../../src/board/is_valid_moves');
-
-const isValidMoves = mod.default;
+const { isValidMoves } = require('../../src/board');
 
 
 test('isValidMoves - valid board', (t) => {

@@ -1,7 +1,8 @@
 // @flow
-import getBoardStatus from '../board/get_board_status';
-import getNextMoves from '../board/get_next_moves';
-import getNextPlayer from '../board/get_next_player';
+import {
+  getBoardStatus,
+  getNextMoves,
+  getNextPlayer } from '../board';
 
 
 /**
