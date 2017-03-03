@@ -42,7 +42,7 @@ const isBetterMove = (baseScore: number, newScore: number, isMax: boolean): bool
  * Where two boards have the same score, returns the first board in the list.
  */
 const provisionBestResultReducer =
-  (player: Player, isMax: boolean, depth: number) =>
+  (isMax: boolean, depth: number) =>
     ([bestScore, bestBoard]: MiniMaxResult, newBoard: Board): MiniMaxResult => {
       const [newScore] = miniMax(newBoard, !isMax, depth);
 
@@ -60,7 +60,7 @@ const getBestMove =
     const [firstMove, ...otherMoves] = moves;
     const [firstScore] = miniMax(firstMove, !isMax, depth);
     const bestResultReducer =
-      provisionBestResultReducer(getNextPlayer(firstMove), isMax, depth);
+      provisionBestResultReducer(isMax, depth);
 
     // NOTE: explicitly passing default accumulator is required for Flow type parser
     return otherMoves.reduce(bestResultReducer, [firstScore, firstMove]);
