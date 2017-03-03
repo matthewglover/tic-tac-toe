@@ -1,7 +1,7 @@
 // @flow
 const test = require('tape');
 const boardReducer = require('../../src/reducers/board').default;
-const { move, setBoard } = require('../../src/action_creators');
+const { move, setBoard, reset } = require('../../src/action_creators');
 
 
 test('boardReducer returns an empty board as initial state', (t) => {
@@ -61,5 +61,18 @@ test('boardReducer, given a setBoard action, returns the board specified in setB
       undefined,
       setBoard(newBoard)),
     newBoard);
+  t.end();
+});
+
+test('boardReducer, given a reset action, returns an empty board', (t) => {
+  t.deepEqual(
+    boardReducer(
+      undefined,
+      reset()),
+    [
+      0, 0, 0,
+      0, 0, 0,
+      0, 0, 0,
+    ]);
   t.end();
 });
