@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../action_creators';
 import * as fromReducers from '../reducers';
-import isCompleteBoard from '../board/is_complete_board';
+import { isCompleteBoard } from '../board';
 
 type SquareValue =
   'X' | 'O' | null
