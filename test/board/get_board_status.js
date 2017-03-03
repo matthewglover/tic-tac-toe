@@ -1,8 +1,7 @@
 // @flow
 const test = require('tape');
-const mod = require('../../src/board/get_board_status');
+const { getBoardStatus } = require('../../src/board');
 
-const getBoardStatus = mod.default;
 
 test('getBoardStatus', (t) => {
   const board = [

@@ -1,4 +1,4 @@
-import isCompleteBoard from '../board/is_complete_board';
+import { isCompleteBoard } from '../board';
 import * as fromActionCreators from '../action_creators';
 import {
   any,

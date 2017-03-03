@@ -1,8 +1,7 @@
 // @flow
 const test = require('tape');
-const mod = require('../../src/board/get_winning_lines');
+const { getWinningLines } = require('../../src/board');
 
-const getWinningLines = mod.default;
 
 test('getWinningLines', (t) => {
   const board = [

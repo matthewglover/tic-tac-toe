@@ -10,7 +10,7 @@
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "docs:build": "documentation build ./src/**/*.js -f md > docs.md",
     "lint": "eslint './**/*.js'",
-    "precommit": "npm run lint && npm run flow && nyc npm test && npm run coverage && npm run docs:build",
+    "precommit": "npm run lint && npm run flow && nyc npm test && npm run coverage",
     "report": "nyc report --reporter=lcov",
     "test": "npm run test:basic | tap-nyan",
     "test:basic": "tape -r ./tests.config.js './test/**/*.js'",

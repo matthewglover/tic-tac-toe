@@ -1,8 +1,7 @@
 // @flow
 const test = require('tape');
-const mod = require('../../src/board/get_free_squares');
+const { getFreeSquares } = require('../../src/board');
 
-const getFreeSquares = mod.default;
 
 test('getFreeSquares', (t) => {
   const board = [

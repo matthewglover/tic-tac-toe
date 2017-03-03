@@ -1,7 +1,7 @@
 import { compose } from 'redux';
 import * as fromReducer from '../reducers';
 import miniMax from '../logic/mini_max';
-import makeMove from '../board/make_move';
+import { makeMove } from '../board';
 import * as fromActionCreators from '../action_creators';
 import {
   any,

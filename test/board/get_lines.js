@@ -1,9 +1,11 @@
 // @flow
 const test = require('tape');
-const mod = require('../../src/board/get_lines');
+const {
+  getLines,
+  getRows,
+  getCols,
+  getDiags } = require('../../src/board');
 
-const getLines = mod.default;
-const { getRows, getCols, getDiags } = mod;
 
 test('getRows', (t) => {
   const board = [

@@ -3,29 +3,58 @@
 ### Table of Contents
 
 -   [getBoardStatus](#getboardstatus)
+-   [getBoardStatus](#getboardstatus-1)
 -   [getFreeSquares](#getfreesquares)
+-   [getFreeSquares](#getfreesquares-1)
 -   [getLineStatus](#getlinestatus)
+-   [getLineStatus](#getlinestatus-1)
 -   [getRows](#getrows)
+-   [getRows](#getrows-1)
 -   [getCols](#getcols)
+-   [getCols](#getcols-1)
 -   [getDiags](#getdiags)
+-   [getDiags](#getdiags-1)
 -   [getLines](#getlines)
+-   [getLines](#getlines-1)
 -   [getValidNextMoves](#getvalidnextmoves)
+-   [getValidNextMoves](#getvalidnextmoves-1)
 -   [getNextMoves](#getnextmoves)
+-   [getNextMoves](#getnextmoves-1)
 -   [getNextPlayer](#getnextplayer)
+-   [getNextPlayer](#getnextplayer-1)
 -   [getNumMoves](#getnummoves)
+-   [getNumMoves](#getnummoves-1)
 -   [getOtherPlayer](#getotherplayer)
+-   [getOtherPlayer](#getotherplayer-1)
 -   [isWinningLine](#iswinningline)
+-   [isWinningLine](#iswinningline-1)
 -   [getWinningLines](#getwinninglines)
+-   [getWinningLines](#getwinninglines-1)
 -   [isFullBoard](#isfullboard)
+-   [isFullBoard](#isfullboard-1)
 -   [isCompleteBoard](#iscompleteboard)
--   [isValidBoard](#isvalidboard)
--   [isValidMoves](#isvalidmoves)
+-   [isCompleteBoard](#iscompleteboard-1)
 -   [makeMove](#makemove)
+-   [makeMove](#makemove-1)
+-   [isValidMoves](#isvalidmoves)
+-   [isValidMoves](#isvalidmoves-1)
+-   [isValidBoard](#isvalidboard)
+-   [isValidBoard](#isvalidboard-1)
 -   [getBoardScore](#getboardscore)
 -   [isBetterMove](#isbettermove)
 -   [provisionBestResultReducer](#provisionbestresultreducer)
 -   [getBestMove](#getbestmove)
 -   [miniMax](#minimax)
+
+## getBoardStatus
+
+Get board status - returning the winning player or zero if no winner
+
+**Parameters**
+
+-   `board` **Board** 
+
+Returns **ItemStatus** 
 
 ## getBoardStatus
 
@@ -47,6 +76,16 @@ Get free squares on the board by position
 
 Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)>** 
 
+## getFreeSquares
+
+Get free squares on the board by position
+
+**Parameters**
+
+-   `board` **Board** 
+
+Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)>** 
+
 ## getLineStatus
 
 Get line status - returning the winning player or zero if no winner
@@ -56,6 +95,26 @@ Get line status - returning the winning player or zero if no winner
 -   `line` **Line** 
 
 Returns **ItemStatus** 
+
+## getLineStatus
+
+Get line status - returning the winning player or zero if no winner
+
+**Parameters**
+
+-   `line` **Line** 
+
+Returns **ItemStatus** 
+
+## getRows
+
+Get rows from a board
+
+**Parameters**
+
+-   `board` **Board** 
+
+Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;Line>** 
 
 ## getRows
 
@@ -77,9 +136,39 @@ Get columns from a board
 
 Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;Line>** 
 
+## getCols
+
+Get columns from a board
+
+**Parameters**
+
+-   `board` **Board** 
+
+Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;Line>** 
+
 ## getDiags
 
 Get diagnal lines from a board
+
+**Parameters**
+
+-   `board` **Board** 
+
+Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;Line>** 
+
+## getDiags
+
+Get diagnal lines from a board
+
+**Parameters**
+
+-   `board` **Board** 
+
+Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;Line>** 
+
+## getLines
+
+Get all lines from a board
 
 **Parameters**
 
@@ -108,6 +197,17 @@ Get a list of next moves (does not check if game is complete)
 
 Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;Board>** 
 
+## getValidNextMoves
+
+Get a list of next moves (does not check if game is complete)
+
+**Parameters**
+
+-   `board` **Board** 
+-   `player` **Player** 
+
+Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;Board>** 
+
 ## getNextMoves
 
 Get a list of next moves (returns an empty array if the game is complete)
@@ -117,6 +217,26 @@ Get a list of next moves (returns an empty array if the game is complete)
 -   `board` **Board** 
 
 Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;Board>** 
+
+## getNextMoves
+
+Get a list of next moves (returns an empty array if the game is complete)
+
+**Parameters**
+
+-   `board` **Board** 
+
+Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;Board>** 
+
+## getNextPlayer
+
+Get next player based on current game state (player 1 always starts)
+
+**Parameters**
+
+-   `board` **Board** 
+
+Returns **Player** 
 
 ## getNextPlayer
 
@@ -139,6 +259,17 @@ Get number of moves made by player
 
 Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
+## getNumMoves
+
+Get number of moves made by player
+
+**Parameters**
+
+-   `board` **Board** 
+-   `player` **Player** 
+
+Returns **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+
 ## getOtherPlayer
 
 Get the other player
@@ -148,6 +279,26 @@ Get the other player
 -   `player` **Player** 
 
 Returns **Player** 
+
+## getOtherPlayer
+
+Get the other player
+
+**Parameters**
+
+-   `player` **Player** 
+
+Returns **Player** 
+
+## isWinningLine
+
+Check if line has a winner
+
+**Parameters**
+
+-   `line` **Line** 
+
+Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 ## isWinningLine
 
@@ -169,6 +320,26 @@ Get all winning lines from a board
 
 Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;Line>** 
 
+## getWinningLines
+
+Get all winning lines from a board
+
+**Parameters**
+
+-   `board` **Board** 
+
+Returns **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;Line>** 
+
+## isFullBoard
+
+Check if board is full
+
+**Parameters**
+
+-   `board` **Board** 
+
+Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
 ## isFullBoard
 
 Check if board is full
@@ -189,19 +360,9 @@ Check board is complete - i.e. there is either one winner or the board is full
 
 Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
-## isValidBoard
+## isCompleteBoard
 
-Check if board is valid - i.e. moves are valid and no more than one winning line
-
-**Parameters**
-
--   `board` **Board** 
-
-Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
-
-## isValidMoves
-
-Check if moves are valid - i.e. the players have made the correct number of moves
+Check board is complete - i.e. there is either one winner or the board is full
 
 **Parameters**
 
@@ -220,6 +381,58 @@ Get a new board with the specified move made
 -   `square` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
 Returns **Board** 
+
+## makeMove
+
+Get a new board with the specified move made
+
+**Parameters**
+
+-   `board` **Board** 
+-   `player` **Player** 
+-   `square` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
+
+Returns **Board** 
+
+## isValidMoves
+
+Check if moves are valid - i.e. the players have made the correct number of moves
+
+**Parameters**
+
+-   `board` **Board** 
+
+Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+## isValidMoves
+
+Check if moves are valid - i.e. the players have made the correct number of moves
+
+**Parameters**
+
+-   `board` **Board** 
+
+Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+## isValidBoard
+
+Check if board is valid - i.e. moves are valid and no more than one winning line
+
+**Parameters**
+
+-   `board` **Board** 
+
+Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+
+## isValidBoard
+
+Check if board is valid - i.e. moves are valid and no more than one winning line
+
+**Parameters**
+
+-   `board` **Board** 
+
+Returns **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 
 ## getBoardScore
 

@@ -3,8 +3,8 @@ import { combineReducers } from 'redux';
 import board, * as fromBoard from './board';
 import game, * as fromGame from './game';
 import gameCompleted from './game_completed';
-import getOtherPlayer from '../board/get_other_player';
-import getBoardStatus from '../board/get_board_status';
+import { getOtherPlayer, getBoardStatus } from '../board';
+
 
 const rootReducer: AppReducer =
   combineReducers({
