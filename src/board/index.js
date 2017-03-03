@@ -1,5 +1,9 @@
 // @flow
 
+// ****************************************************************************
+// * SQUARE FUNCTIONS
+// ****************************************************************************
+
 /**
  * Get free squares on the board by position
  */
@@ -10,6 +14,11 @@ export const getFreeSquares = (board: Board): Array<number> =>
         ? acc.concat(idx)
         : acc)
     , []);
+
+
+// ****************************************************************************
+// * LINE FUNCTIONS
+// ****************************************************************************
 
 /**
  * Get line status - returning the winning player or zero if no winner
@@ -95,12 +104,6 @@ export const getLines = (board: Board): Array<Line> =>
   ];
 
 /**
- * Check if board is full
- */
-const isFullBoard = (board: Board): boolean =>
-  board.every(sq => sq !== 0);
-
-/**
  * Check if line has a winner
  */
 const isWinningLine = (line: Line): boolean => {
@@ -118,23 +121,10 @@ export const getWinningLines = (board: Board): Array<Line> =>
   getLines(board)
   .filter(isWinningLine);
 
-/**
- * Check board is complete - i.e. there is either one winner or the board is full
- */
-export const isCompleteBoard = (board: Board): boolean =>
-  getWinningLines(board).length === 1 ||
-  isFullBoard(board);
 
-/**
- * Get a new board with the specified move made
- */
-export const makeMove = (board: Board, player: Player, square: number): Board =>
-  Array.from(
-    { length: 9 },
-    (_, i) =>
-      (i === square
-        ? player
-        : board[i]));
+// ****************************************************************************
+// * BOARD AND PLAYED MOVE FUNCTIONS
+// ****************************************************************************
 
 /**
  * Get number of moves made by player
@@ -147,42 +137,20 @@ export const getNumMoves = (board: Board, player: Player): number =>
         : acc),
     0);
 
-/**
- * Get next player based on current game state (player 1 always starts)
- */
-export const getNextPlayer = (board: Board): Player => {
-  const p1Moves = getNumMoves(board, 1);
-  const p2Moves = getNumMoves(board, 2);
-
-  return p1Moves === p2Moves
-    ? 1
-    : 2;
-};
 
 /**
- * Get a list of next moves (does not check if game is complete)
+ * Check if board is full
  */
-const getValidNextMoves = (board: Board, player: Player): Array<Board> =>
-  getFreeSquares(board)
-    .map(square => makeMove(board, player, square));
-
+const isFullBoard = (board: Board): boolean =>
+  board.every(sq => sq !== 0);
 
 /**
- * Get a list of next moves (returns an empty array if the game is complete)
+ * Check board is complete - i.e. there is either one winner or the board is full
  */
-export const getNextMoves = (board: Board): Array<Board> =>
-  (isCompleteBoard(board)
-    ? []
-    : getValidNextMoves(board, getNextPlayer(board)));
+export const isCompleteBoard = (board: Board): boolean =>
+  getWinningLines(board).length === 1 ||
+  isFullBoard(board);
 
-
-/**
- * Get the other player
- */
-export const getOtherPlayer = (player: Player): Player =>
-  (player === 1
-    ? 2
-    : 1);
 
 /**
  * Check if moves are valid - i.e. the players have made the correct number of moves
@@ -217,3 +185,54 @@ export const getBoardStatus = (board: Board): ItemStatus => {
   if (lineStatuses.find(eq(2))) return 2;
   return 0;
 };
+
+
+// ****************************************************************************
+// * PLAYER AND FUTURE MOVE FUNCTIONS
+// ****************************************************************************
+
+/**
+ * Get a new board with the specified move made
+ */
+export const makeMove = (board: Board, player: Player, square: number): Board =>
+  Array.from(
+    { length: 9 },
+    (_, i) =>
+      (i === square
+        ? player
+        : board[i]));
+
+/**
+ * Get a list of next moves (does not check if game is complete)
+ */
+const getValidNextMoves = (board: Board, player: Player): Array<Board> =>
+  getFreeSquares(board)
+    .map(square => makeMove(board, player, square));
+
+/**
+ * Get next player based on current game state (player 1 always starts)
+ */
+export const getNextPlayer = (board: Board): Player => {
+  const p1Moves = getNumMoves(board, 1);
+  const p2Moves = getNumMoves(board, 2);
+
+  return p1Moves === p2Moves
+    ? 1
+    : 2;
+};
+
+/**
+ * Get a list of next moves (returns an empty array if the game is complete)
+ */
+export const getNextMoves = (board: Board): Array<Board> =>
+  (isCompleteBoard(board)
+    ? []
+    : getValidNextMoves(board, getNextPlayer(board)));
+
+/**
+ * Get the other player
+ */
+export const getOtherPlayer = (player: Player): Player =>
+  (player === 1
+    ? 2
+    : 1);
