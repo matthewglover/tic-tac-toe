@@ -1,8 +1,7 @@
 // @flow
 const test = require('tape');
-const mod = require('../../src/board/make_move');
+const { makeMove } = require('../../src/board');
 
-const makeMove = mod.default;
 
 test('makeMove', (t) => {
   const board = [

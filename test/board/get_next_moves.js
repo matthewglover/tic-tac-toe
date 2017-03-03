@@ -1,8 +1,7 @@
 // @flow
 const test = require('tape');
-const mod = require('../../src/board/get_next_moves');
+const { getNextMoves } = require('../../src/board');
 
-const getNextMoves = mod.default;
 
 test('getNextMoves', (t) => {
   const board = [

@@ -1,8 +1,7 @@
 // @flow
 const test = require('tape');
-const mod = require('../../src/board/get_line_status');
+const { getLineStatus } = require('../../src/board');
 
-const getLineStatus = mod.default;
 
 test('getLineStatus', (t) => {
   t.equal(
