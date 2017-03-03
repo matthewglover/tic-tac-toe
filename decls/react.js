@@ -15,7 +15,7 @@ declare type GameType =
 declare type PlayerType =
   'HUMAN' | 'COMPUTER'
 
-declare type GameStartAction = {
+declare type SetNewGameAction = {
   type: 'SET_NEW_GAME',
   gameType: GameType
 }
@@ -33,7 +33,12 @@ declare type InitAction = {
   type: '@@INIT'
 }
 
+declare type SetGameCompletedAction = {
+  type: 'SET_GAME_COMPLETED',
+  completed: boolean
+}
+
 declare type Action =
-  MoveAction | GameStartAction | SetBoardAction | ResetAction | InitAction
+  MoveAction | SetNewGameAction | SetBoardAction | ResetAction | InitAction | SetGameCompletedAction
 
 declare type AppReducer = (state: AppState, action: Action) => AppState
