@@ -261,7 +261,6 @@ Where two boards have the same score, returns the first board in the list.
 
 **Parameters**
 
--   `player` **Player** 
 -   `isMax` **[boolean](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
 -   `depth` **[number](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
 
