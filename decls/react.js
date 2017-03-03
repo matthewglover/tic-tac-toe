@@ -29,7 +29,11 @@ declare type ResetAction = {
   type: 'RESET'
 }
 
+declare type InitAction = {
+  type: '@@INIT'
+}
+
 declare type Action =
-  MoveAction | GameStartAction | SetBoardAction | ResetAction
+  MoveAction | GameStartAction | SetBoardAction | ResetAction | InitAction
 
 declare type AppReducer = (state: AppState, action: Action) => AppState
