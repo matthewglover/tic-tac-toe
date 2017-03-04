@@ -1,6 +1,17 @@
 // @flow
 
 // ****************************************************************************
+// * CONSTANTS
+// ****************************************************************************
+
+export const EMPTY_BOARD =
+  [
+    0, 0, 0,
+    0, 0, 0,
+    0, 0, 0,
+  ];
+
+// ****************************************************************************
 // * SQUARE FUNCTIONS
 // ****************************************************************************
 
@@ -23,7 +34,7 @@ export const getFreeSquares = (board: Board): Array<number> =>
 /**
  * Get line status - returning the winning player or zero if no winner
  */
-export const getLineStatus = (line: Line): ItemStatus => {
+export const getLineStatus = (line: Line): SquareValue => {
   const [a, b, c] = line;
 
   switch (a) {
@@ -174,9 +185,9 @@ export const isValidBoard = (board: Board): boolean =>
 const eq = status => value => value === status;
 
 /**
- * Get board status - returning the winning player or zero if no winner
+ * Get board status - return the winning player or zero if no winner
  */
-export const getBoardStatus = (board: Board): ItemStatus => {
+export const getBoardStatus = (board: Board): SquareValue => {
   const lineStatuses =
     getLines(board)
     .map(getLineStatus);
@@ -191,16 +202,26 @@ export const getBoardStatus = (board: Board): ItemStatus => {
 // * PLAYER AND FUTURE MOVE FUNCTIONS
 // ****************************************************************************
 
+
+const calcSquareValue =
+  (board: Board, player: Player, moveSquare: number) =>
+    (currentSquare: number): SquareValue =>
+      (currentSquare === moveSquare
+        ? player
+        : board[currentSquare]);
+
 /**
  * Get a new board with the specified move made
  */
-export const makeMove = (board: Board, player: Player, square: number): Board =>
-  Array.from(
-    { length: 9 },
-    (_, i) =>
-      (i === square
-        ? player
-        : board[i]));
+export const makeMove = (board: Board, player: Player, moveSquare: number): Board => {
+  const getSquareValue = calcSquareValue(board, player, moveSquare);
+
+  return [
+    getSquareValue(0), getSquareValue(1), getSquareValue(2),
+    getSquareValue(3), getSquareValue(4), getSquareValue(5),
+    getSquareValue(6), getSquareValue(7), getSquareValue(8),
+  ];
+};
 
 /**
  * Get a list of next moves (does not check if game is complete)

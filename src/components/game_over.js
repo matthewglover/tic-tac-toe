@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as fromReducers from '../reducers';
 
 type PropTypes = {
-  winner: ItemStatus
+  winner: SquareValue
 }
 
 const GameOver = ({ winner }: PropTypes) =>

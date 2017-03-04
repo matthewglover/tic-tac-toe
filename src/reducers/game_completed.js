@@ -1,3 +1,4 @@
+// @flow
 
 const gameCompletedReducer = (gameCompleted: boolean = false, action: Action): boolean => {
   switch (action.type) {

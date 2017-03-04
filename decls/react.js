@@ -1,7 +1,8 @@
 
 declare type AppState = {
   board: Board,
-  game: GameType
+  game: ?GameType,
+  gameCompleted: boolean
 }
 
 declare type MoveAction = {
@@ -10,12 +11,12 @@ declare type MoveAction = {
 }
 
 declare type GameType =
-  null | 'HUMAN_HUMAN' | 'HUMAN_COMPUTER' | 'COMPUTER_HUMAN' | 'COMPUTER_COMPUTER'
+  'HUMAN_HUMAN' | 'HUMAN_COMPUTER' | 'COMPUTER_HUMAN' | 'COMPUTER_COMPUTER'
 
 declare type PlayerType =
   'HUMAN' | 'COMPUTER'
 
-declare type GameStartAction = {
+declare type SetNewGameAction = {
   type: 'SET_NEW_GAME',
   gameType: GameType
 }
@@ -29,7 +30,16 @@ declare type ResetAction = {
   type: 'RESET'
 }
 
-declare type Action =
-  MoveAction | GameStartAction | SetBoardAction | ResetAction
+declare type InitAction = {
+  type: '@@INIT'
+}
 
-declare type AppReducer = (state: AppState, action: Action) => AppState
+declare type SetGameCompletedAction = {
+  type: 'SET_GAME_COMPLETED',
+  completed: boolean
+}
+
+declare type Action =
+  MoveAction | SetNewGameAction | SetBoardAction | ResetAction | InitAction | SetGameCompletedAction
+
+declare type AppReducer = (state: ?AppState, action: Action) => AppState

@@ -5,12 +5,12 @@ import * as actionCreators from '../action_creators';
 import * as fromReducers from '../reducers';
 import { isCompleteBoard } from '../board';
 
-type SquareValue =
+type SquareDisplayValue =
   'X' | 'O' | null
 
 type PropTypes = {
   clickHandler?: Function,
-  value: SquareValue,
+  value: SquareDisplayValue,
 }
 
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -19,7 +19,7 @@ const Square = ({ clickHandler, value }: PropTypes): React$Element<*> =>
   <div className="square" onClick={clickHandler}>{value}</div>;
 
 
-const convertStatusToValue = (status: ItemStatus): SquareValue => {
+const convertStatusToValue = (status: SquareValue): SquareDisplayValue => {
   switch (status) {
     case 1: return 'X';
     case 2: return 'O';

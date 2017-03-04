@@ -1,9 +1,6 @@
 // @flow
-import { makeMove, getNextPlayer } from '../board';
+import { makeMove, getNextPlayer, EMPTY_BOARD } from '../board';
 
-
-const EMPTY_BOARD: Board =
-  Array.from({ length: 9 }, () => 0);
 
 const boardReducer = (board: Board = EMPTY_BOARD, action: Action): Board => {
   switch (action.type) {

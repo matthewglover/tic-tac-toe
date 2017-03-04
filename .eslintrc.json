@@ -7,7 +7,7 @@
   },
   "globals": {
     "Player": true,
-    "ItemStatus": true,
+    "SquareValue": true,
     "Board": true,
     "Line": true,
     "Score": true,
@@ -18,7 +18,12 @@
     "Action": true,
     "AppState": true,
     "GameType": true,
-    "PlayerType": true
+    "PlayerType": true,
+    "MoveAction": true,
+    "SetNewGameAction": true,
+    "SetBoardAction": true,
+    "SetGameCompletedAction": true,
+    "ResetAction": true
   },
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
