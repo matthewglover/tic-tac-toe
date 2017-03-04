@@ -2,14 +2,14 @@ declare type Player =
   1 |
   2;
 
-declare type ItemStatus =
+declare type SquareValue =
   Player | 0;
 
 declare type Board = [
-  ItemStatus, ItemStatus, ItemStatus,
-  ItemStatus, ItemStatus, ItemStatus,
-  ItemStatus, ItemStatus, ItemStatus,
+  SquareValue, SquareValue, SquareValue,
+  SquareValue, SquareValue, SquareValue,
+  SquareValue, SquareValue, SquareValue,
 ];
 
 declare type Line =
-  [ItemStatus, ItemStatus, ItemStatus];
+  [SquareValue, SquareValue, SquareValue];

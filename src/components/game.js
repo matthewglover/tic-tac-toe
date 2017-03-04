@@ -26,7 +26,7 @@ class Game extends Component {
 
   props: Props
 
-  render(): React$Element<*> {
+  render() {
     return (this.props.gameCompleted
       ? <Redirect to="/game_over" />
       : <Board />);

@@ -7,7 +7,7 @@
   },
   "globals": {
     "Player": true,
-    "ItemStatus": true,
+    "SquareValue": true,
     "Board": true,
     "Line": true,
     "Score": true,
