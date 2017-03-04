@@ -1,7 +1,8 @@
 
 declare type AppState = {
   board: Board,
-  game: GameType
+  game: ?GameType,
+  gameCompleted: boolean
 }
 
 declare type MoveAction = {
@@ -41,4 +42,4 @@ declare type SetGameCompletedAction = {
 declare type Action =
   MoveAction | SetNewGameAction | SetBoardAction | ResetAction | InitAction | SetGameCompletedAction
 
-declare type AppReducer = (state: AppState, action: Action) => AppState
+declare type AppReducer = (state: ?AppState, action: Action) => AppState
