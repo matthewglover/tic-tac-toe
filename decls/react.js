@@ -10,7 +10,7 @@ declare type MoveAction = {
 }
 
 declare type GameType =
-  null | 'HUMAN_HUMAN' | 'HUMAN_COMPUTER' | 'COMPUTER_HUMAN' | 'COMPUTER_COMPUTER'
+  'HUMAN_HUMAN' | 'HUMAN_COMPUTER' | 'COMPUTER_HUMAN' | 'COMPUTER_COMPUTER'
 
 declare type PlayerType =
   'HUMAN' | 'COMPUTER'
