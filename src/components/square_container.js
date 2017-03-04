@@ -3,45 +3,33 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../action_creators';
 import * as fromReducers from '../reducers';
-import { isCompleteBoard } from '../board';
-
-type SquareDisplayValue =
-  'X' | 'O' | null
+import { isCompleteBoard, convertSquareToDisplayValue, isEmptySquare } from '../board';
 
 type PropTypes = {
   clickHandler?: Function,
-  value: SquareDisplayValue,
+  value: ?SquareDisplayValue,
 }
 
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 
-const Square = ({ clickHandler, value }: PropTypes): React$Element<*> =>
+export const Square = ({ clickHandler, value }: PropTypes): React$Element<*> =>
   <div className="square" onClick={clickHandler}>{value}</div>;
 
-
-const convertStatusToValue = (status: SquareValue): SquareDisplayValue => {
-  switch (status) {
-    case 1: return 'X';
-    case 2: return 'O';
-    default: return null;
-  }
-};
-
-const provisionClickHandler = ({ board, squareStatus, position, move, isHumanPlayer }) =>
+const provisionClickHandler = ({ board, squareValue, position, move, isHumanPlayer }) =>
   (isHumanPlayer &&
-   squareStatus === 0 &&
+   isEmptySquare(squareValue) &&
    !isCompleteBoard(board)
     ? () => move(position)
     : undefined);
 
 const mergeProps = (state, { move }, { position }): PropTypes => {
   const board = state.board;
-  const squareStatus = board[position];
-  const value = convertStatusToValue(squareStatus);
+  const squareValue = board[position];
+  const value = convertSquareToDisplayValue(squareValue);
   const isHumanPlayer = fromReducers.isHumanPlayer(state);
 
   const clickHandler =
-    provisionClickHandler({ board, squareStatus, position, move, isHumanPlayer });
+    provisionClickHandler({ board, squareValue, position, move, isHumanPlayer });
 
   return {
     value,
