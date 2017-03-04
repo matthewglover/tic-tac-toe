@@ -54,7 +54,7 @@ Get board status - returning the winning player or zero if no winner
 
 -   `board` **Board** 
 
-Returns **ItemStatus** 
+Returns **SquareValue** 
 
 ## getBoardStatus
 
@@ -64,7 +64,7 @@ Get board status - returning the winning player or zero if no winner
 
 -   `board` **Board** 
 
-Returns **ItemStatus** 
+Returns **SquareValue** 
 
 ## getFreeSquares
 
@@ -94,7 +94,7 @@ Get line status - returning the winning player or zero if no winner
 
 -   `line` **Line** 
 
-Returns **ItemStatus** 
+Returns **SquareValue** 
 
 ## getLineStatus
 
@@ -104,7 +104,7 @@ Get line status - returning the winning player or zero if no winner
 
 -   `line` **Line** 
 
-Returns **ItemStatus** 
+Returns **SquareValue** 
 
 ## getRows
 

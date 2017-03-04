@@ -28,5 +28,5 @@ export const getActivePlayerType = (state: AppState) =>
 export const isHumanPlayer = (state: AppState): boolean =>
   fromGame.getPlayerType(state.game, getActivePlayer(state)) === 'HUMAN';
 
-export const getWinner = (state: AppState): ItemStatus =>
+export const getWinner = (state: AppState): SquareValue =>
   getBoardStatus(state.board);
