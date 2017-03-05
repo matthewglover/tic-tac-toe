@@ -24,7 +24,8 @@
     "SetBoardAction": true,
     "SetGameCompletedAction": true,
     "ResetAction": true,
-    "SquareDisplayValue": true
+    "SquareDisplayValue": true,
+    "BoardStatus": true
   },
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]

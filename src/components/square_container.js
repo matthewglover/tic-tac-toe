@@ -5,31 +5,28 @@ import * as actionCreators from '../action_creators';
 import * as fromReducers from '../reducers';
 import { isCompleteBoard, convertSquareToDisplayValue, isEmptySquare } from '../board';
 
-type PropTypes = {
+
+export type PropTypes = {
   clickHandler?: Function,
   value: ?SquareDisplayValue,
 }
 
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 export const Square = ({ clickHandler, value }: PropTypes): React$Element<*> =>
   <div className="square" onClick={clickHandler}>{value}</div>;
 
-const provisionClickHandler = ({ board, squareValue, position, move, isHumanPlayer }) =>
-  (isHumanPlayer &&
-   isEmptySquare(squareValue) &&
-   !isCompleteBoard(board)
-    ? () => move(position)
-    : undefined);
 
-const mergeProps = (state, { move }, { position }): PropTypes => {
-  const board = state.board;
-  const squareValue = board[position];
-  const value = convertSquareToDisplayValue(squareValue);
-  const isHumanPlayer = fromReducers.isHumanPlayer(state);
+const isClickable = (isHumanPlayer: boolean, squareValue: SquareValue, board: Board): boolean =>
+  isHumanPlayer &&
+  isEmptySquare(squareValue) &&
+  !isCompleteBoard(board);
 
-  const clickHandler =
-    provisionClickHandler({ board, squareValue, position, move, isHumanPlayer });
+
+const mergeProps = ({ value, clickable }, { move }): PropTypes => {
+  const clickHandler = clickable
+    ? move
+    : undefined;
 
   return {
     value,
@@ -38,4 +35,27 @@ const mergeProps = (state, { move }, { position }): PropTypes => {
 };
 
 
-export default connect(state => state, actionCreators, mergeProps)(Square);
+const mapStateToProps = (state, { position }) => {
+  const board = state.board;
+  const squareValue = board[position];
+  const value = convertSquareToDisplayValue(squareValue);
+  const isHumanPlayer = fromReducers.isHumanPlayer(state);
+  const clickable = isClickable(isHumanPlayer, squareValue, board);
+
+  return {
+    value,
+    clickable,
+  };
+};
+
+const mapDispatchToProps = (dispatch, { position }) =>
+  ({
+    move: () => dispatch(actionCreators.move(position)),
+  });
+
+
+const ConnectedSquare =
+  connect(mapStateToProps, mapDispatchToProps, mergeProps)(Square);
+
+
+export default ConnectedSquare;

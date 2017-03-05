@@ -30,3 +30,6 @@ export const isHumanPlayer = (state: AppState): boolean =>
 
 export const getWinner = (state: AppState): SquareValue =>
   getBoardStatus(state.board);
+
+export const isGameCompleted = (state: AppState): boolean =>
+  state.gameCompleted;

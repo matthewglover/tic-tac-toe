@@ -5,6 +5,9 @@ declare type Player =
 declare type SquareValue =
   Player | 0;
 
+declare type BoardStatus =
+  Player | 0;
+
 declare type SquareDisplayValue =
   'X' | 'O';
 
