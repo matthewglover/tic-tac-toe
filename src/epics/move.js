@@ -39,11 +39,15 @@ const getActivePlayerType = store => () =>
 const isComputerPlayer = playerType =>
   playerType === 'COMPUTER';
 
+const isGameActive = store => () =>
+  !fromReducer.isGameCompleted(store.getState());
+
 const move = (action$, store) =>
   action$
+    .delay(500)
+    .filter(isGameActive(store))
     .filter(any(isMoveAction, isStartGameAction, isSetBoardAction))
     .filter(compose(isComputerPlayer, getActivePlayerType(store)))
-    .delay(500)
     .map(getNextBoard(store))
     .map(fromActionCreators.setBoard);
 

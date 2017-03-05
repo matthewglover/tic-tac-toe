@@ -199,7 +199,7 @@ const eq = status => value => value === status;
 /**
  * Get board status - return the winning player or zero if no winner
  */
-export const getBoardStatus = (board: Board): SquareValue => {
+export const getBoardStatus = (board: Board): BoardStatus => {
   const lineStatuses =
     getLines(board)
     .map(getLineStatus);
@@ -208,6 +208,10 @@ export const getBoardStatus = (board: Board): SquareValue => {
   if (lineStatuses.find(eq(2))) return 2;
   return 0;
 };
+
+
+export const isWinner = (boardStatus: BoardStatus): boolean =>
+  boardStatus !== 0;
 
 
 // ****************************************************************************
