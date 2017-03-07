@@ -1,4 +1,3 @@
-import { compose } from 'redux';
 import * as fromReducer from '../reducers';
 import miniMax from '../logic/mini_max';
 import { makeMove } from '../board';
@@ -8,7 +7,6 @@ import {
   isMoveAction,
   isSetNewGameAction,
   isSetBoardAction } from './helpers';
-
 
 const calcNextBoard = (board) => {
   const [, nextBoard] = miniMax(board);
@@ -23,32 +21,33 @@ const chooseRandom = (board) => {
 const isEmptyBoard = board =>
   board.every(status => status === 0);
 
-const getNextBoard = store => () => {
-  const { board } = store.getState();
-
-  const res = (isEmptyBoard(board)
-    ? chooseRandom(board)
-    : calcNextBoard(board));
-
-  return res;
-};
-
-const getActivePlayerType = store => () =>
+const getActivePlayerType = store =>
   fromReducer.getActivePlayerType(store.getState());
 
-const isComputerPlayer = playerType =>
-  playerType === 'COMPUTER';
+const isComputerPlayerActive = store => () =>
+  getActivePlayerType(store) === 'COMPUTER';
 
 const isGameActive = store => () =>
   !fromReducer.isGameCompleted(store.getState());
 
-const move = (action$, store) =>
+const getNextBoard = (store) => {
+  const { board } = store.getState();
+
+  return isEmptyBoard(board)
+    ? chooseRandom(board)
+    : calcNextBoard(board);
+};
+
+
+const makeNextMove = store => () =>
+  fromActionCreators.setBoard(getNextBoard(store));
+
+const move = delay => (action$, store) =>
   action$
     .filter(isGameActive(store))
     .filter(any(isMoveAction, isSetNewGameAction, isSetBoardAction))
-    .filter(compose(isComputerPlayer, getActivePlayerType(store)))
-    .delay(500)
-    .map(getNextBoard(store))
-    .map(fromActionCreators.setBoard);
+    .filter(isComputerPlayerActive(store))
+    .delay(delay)
+    .map(makeNextMove(store));
 
 export default move;

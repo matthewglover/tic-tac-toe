@@ -12,11 +12,11 @@ const isGameCompleted = store => () =>
 const setGameCompleted = () =>
   fromActionCreators.setGameCompleted(true);
 
-const completedGame = (action$, store) =>
+const completedGame = delay => (action$, store) =>
   action$
     .filter(any(isMoveAction, isSetBoardAction))
     .filter(isGameCompleted(store))
-    .delay(500)
+    .delay(delay)
     .map(setGameCompleted);
 
 export default completedGame;

@@ -17,11 +17,13 @@ const board =
     0, 0, 1,
   ];
 
+const doCompletedGame = completedGame(0);
+
 test('completedGame', (t) => {
   const action$ = new Subject();
   const store = fakeStore(makeState({ gameCompleted: false, board }));
 
-  completedGame(action$, store)
+  doCompletedGame(action$, store, 0)
     .subscribe(
       (action) => {
         t.deepEqual(action, { type: 'SET_GAME_COMPLETED', completed: true });
@@ -37,7 +39,7 @@ test('completedGame', (t) => {
   const action$ = new Subject();
   const store = fakeStore(makeState({ gameCompleted: false, board }));
 
-  completedGame(action$, store)
+  doCompletedGame(action$, store, 0)
     .subscribe(
       (action) => {
         t.deepEqual(action, { type: 'SET_GAME_COMPLETED', completed: true });

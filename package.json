@@ -13,7 +13,7 @@
     "precommit": "npm run lint && npm run flow && nyc npm test && npm run coverage",
     "report": "nyc report --reporter=lcov",
     "test": "npm run test:basic | tap-nyan",
-    "test:basic": "tape -r ./tests.config.js './test/**/*.js'",
+    "test:basic": "NODE_ENV=test tape -r ./tests.config.js './test/**/*.js'",
     "test:watch": "nodemon -q -x 'npm run test:basic | faucet'",
     "test:watch-debug": "nodemon -q -x 'npm run test:basic'"
   },
