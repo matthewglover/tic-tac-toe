@@ -16,7 +16,7 @@ const GAME_LINKS = [
   { gameType: 'COMPUTER_COMPUTER', description: 'Computer vs Computer' },
 ];
 
-class ChooseGame extends Component {
+export class ChooseGame extends Component {
 
   componentDidMount() {
     const dispatch = this.props.dispatch;
