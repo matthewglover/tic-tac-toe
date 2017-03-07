@@ -14,7 +14,8 @@
     "report": "nyc report --reporter=lcov",
     "test": "npm run test:basic | tap-nyan",
     "test:basic": "tape -r ./tests.config.js './test/**/*.js'",
-    "test:watch": "nodemon -q -x 'npm run test:basic'"
+    "test:watch": "nodemon -q -x 'npm run test:basic | faucet'",
+    "test:watch-debug": "nodemon -q -x 'npm run test:basic'"
   },
   "repository": {
     "type": "git",
@@ -38,17 +39,22 @@
     "coveralls": "^2.11.14",
     "css-loader": "0.23.1",
     "documentation": "^4.0.0-beta.18",
+    "enzyme": "^2.7.1",
     "eslint": "^3.12.2",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.8.0",
     "flow-bin": "^0.40.0",
+    "history": "^4.5.1",
     "html-webpack-plugin": "^2.24.1",
     "husky": "^0.11.9",
+    "jsdom": "^9.11.0",
     "nyc": "^8.3.2",
     "postcss-loader": "0.9.1",
+    "react-addons-test-utils": "^15.4.2",
     "rimraf": "^2.5.4",
+    "sinon": "^1.17.7",
     "style-loader": "0.13.1",
     "tap-dot": "^1.0.5",
     "tap-nyan": "^1.1.0",
@@ -68,5 +74,10 @@
     "redux": "latest",
     "redux-observable": "^0.12.2",
     "rxjs": "^5.0.3"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.js"
+    ]
   }
 }

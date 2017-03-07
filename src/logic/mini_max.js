@@ -20,7 +20,7 @@ const getBoardScore = (board: Board, isMax: boolean, depth: number): Score => {
   if (boardStatus === 0) return 0;
   if ((player === boardStatus && isMax) ||
       (player !== boardStatus && !isMax)) return 10 - depth;
-  return -10 + depth;
+  return depth - 10;
 };
 
 /**
@@ -37,7 +37,7 @@ const isBetterMove = (baseScore: number, newScore: number, isMax: boolean): bool
 /* eslint-disable no-use-before-define */
 
 /**
- * Provision a reducer with additional data: current player, isMax and depth.
+ * Provision a reducer with additional data: isMax and depth.
  * The provisioned reducer reduces over a list of boards and returns the board
  * with the highest score.
  * Where two boards have the same score, returns the first board in the list.
@@ -77,7 +77,7 @@ const miniMax =
   (board: Board, isMax: boolean = true, depth: number = 0): MiniMaxResult => {
     const moves = getNextMoves(board);
 
-    return (moves.length === 0)
+    return moves.length === 0
       ? [getBoardScore(board, isMax, depth), board]
       : getBestMove(moves, isMax, depth + 1);
   };

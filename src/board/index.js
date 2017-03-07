@@ -27,12 +27,24 @@ export const getFreeSquares = (board: Board): Array<number> =>
     , []);
 
 
+export const convertSquareToDisplayValue = (squareValue: SquareValue): ?SquareDisplayValue => {
+  switch (squareValue) {
+    case 1: return 'X';
+    case 2: return 'O';
+    default: return null;
+  }
+};
+
+export const isEmptySquare = (squareValue: SquareValue): boolean =>
+  squareValue === 0;
+
+
 // ****************************************************************************
 // * LINE FUNCTIONS
 // ****************************************************************************
 
 /**
- * Get line status - returning the winning player or zero if no winner
+ * Get line status - returns the winning player or zero if no winner
  */
 export const getLineStatus = (line: Line): SquareValue => {
   const [a, b, c] = line;
@@ -87,7 +99,7 @@ export const getCols = (board: Board): Array<Line> => {
 
 
 /**
- * Get diagnal lines from a board
+ * Get diagonal lines from a board
  */
 export const getDiags = (board: Board): Array<Line> => {
   /* eslint-disable no-unused-vars */
@@ -187,7 +199,7 @@ const eq = status => value => value === status;
 /**
  * Get board status - return the winning player or zero if no winner
  */
-export const getBoardStatus = (board: Board): SquareValue => {
+export const getBoardStatus = (board: Board): BoardStatus => {
   const lineStatuses =
     getLines(board)
     .map(getLineStatus);
@@ -196,6 +208,10 @@ export const getBoardStatus = (board: Board): SquareValue => {
   if (lineStatuses.find(eq(2))) return 2;
   return 0;
 };
+
+
+export const isWinner = (boardStatus: BoardStatus): boolean =>
+  boardStatus !== 0;
 
 
 // ****************************************************************************

@@ -2,16 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as fromReducers from '../reducers';
+import { isWinner } from '../board';
 
-type PropTypes = {
-  winner: SquareValue
+export type PropTypes = {
+  winner: BoardStatus
 }
 
-const GameOver = ({ winner }: PropTypes) =>
+export const GameOver = ({ winner }: PropTypes) =>
   <div>
-    {winner === 0
-      ? 'It\'s a draw!'
-      : `Player ${winner} wins!`}<br />
+    {isWinner(winner)
+      ? `Player ${winner} wins!`
+      : 'It\'s a draw!'}<br />
 
     <Link to="/">
       Play again

@@ -1,19 +1,19 @@
 // @flow
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import ChooseGame from './choose_game';
+import ChooseGameContainer from './choose_game_container';
 import Board from './board';
-import Game from './game';
-import GameOver from './game_over';
+import GameContainer from './game_container';
+import GameOverContainer from './game_over_container';
 
 
 const App = (): React$Element<*> =>
   <BrowserRouter>
     <div>
-      <Route exact path="/" component={ChooseGame} />
+      <Route exact path="/" component={ChooseGameContainer} />
       <Route path="/board" component={Board} />
-      <Route path="/game" component={Game} />
-      <Route path="/game_over" component={GameOver} />
+      <Route path="/game" component={GameContainer} />
+      <Route path="/game_over" component={GameOverContainer} />
     </div>
   </BrowserRouter>;
 

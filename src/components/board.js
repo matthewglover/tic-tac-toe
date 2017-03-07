@@ -1,12 +1,12 @@
 // @flow
 import React from 'react';
-import Square from './square';
+import SquareContainer from './square_container';
 
 const generateSquares = (): Array<React$Element<*>> =>
   Array.from(
     { length: 9 },
     (_, i) =>
-      <Square key={i} position={i} />);
+      <SquareContainer key={i} position={i} />);
 
 const Board = (): React$Element<*> =>
   <div className="board">
