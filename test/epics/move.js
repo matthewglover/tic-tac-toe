@@ -3,6 +3,7 @@ const { Subject } = require('rxjs/Rx');
 const move = require('../../src/epics/move').default;
 const { makeState } = require('../../test_helpers');
 
+
 const noop = () => {};
 
 const fakeStore = state =>
@@ -24,11 +25,14 @@ const board2 =
     0, 0, 0,
   ];
 
-test('completedGame', (t) => {
+
+const doMove = move(0);
+
+test('move', (t) => {
   const action$ = new Subject();
   const store = fakeStore(makeState({ gameCompleted: false, board, game: 'HUMAN_COMPUTER' }));
 
-  move(action$, store)
+  doMove(action$, store, 0)
     .subscribe(
       (action) => {
         t.equal(action.type, 'SET_BOARD');
@@ -40,11 +44,11 @@ test('completedGame', (t) => {
   action$.next({ type: 'MOVE', position: 6 });
 });
 
-test('completedGame', (t) => {
+test('move', (t) => {
   const action$ = new Subject();
   const store = fakeStore(makeState({ gameCompleted: false, board, game: 'COMPUTER_COMPUTER' }));
 
-  move(action$, store)
+  doMove(action$, store, 0)
     .subscribe(
       (action) => {
         t.equal(action.type, 'SET_BOARD');
@@ -57,11 +61,11 @@ test('completedGame', (t) => {
 });
 
 
-test('completedGame', (t) => {
+test('move', (t) => {
   const action$ = new Subject();
   const store = fakeStore(makeState({ gameCompleted: false, board: board2, game: 'COMPUTER_HUMAN' }));
 
-  move(action$, store)
+  doMove(action$, store, 1)
     .subscribe(
       (action) => {
         t.equal(action.type, 'SET_BOARD');
