@@ -6,7 +6,7 @@ import * as fromActionCreators from '../action_creators';
 import {
   any,
   isMoveAction,
-  isStartGameAction,
+  isSetNewGameAction,
   isSetBoardAction } from './helpers';
 
 
@@ -46,7 +46,7 @@ const move = (action$, store) =>
   action$
     .delay(500)
     .filter(isGameActive(store))
-    .filter(any(isMoveAction, isStartGameAction, isSetBoardAction))
+    .filter(any(isMoveAction, isSetNewGameAction, isSetBoardAction))
     .filter(compose(isComputerPlayer, getActivePlayerType(store)))
     .map(getNextBoard(store))
     .map(fromActionCreators.setBoard);
