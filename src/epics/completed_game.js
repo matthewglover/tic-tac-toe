@@ -5,17 +5,18 @@ import {
   isMoveAction,
   isSetBoardAction } from './helpers';
 
-const isGameOver = store => () =>
+
+const isGameCompleted = store => () =>
   isCompleteBoard(store.getState().board);
 
-const setCompleted = () =>
+const setGameCompleted = () =>
   fromActionCreators.setGameCompleted(true);
 
 const completedGame = (action$, store) =>
   action$
     .filter(any(isMoveAction, isSetBoardAction))
-    .filter(isGameOver(store))
-    .delay(1000)
-    .map(setCompleted);
+    .filter(isGameCompleted(store))
+    .delay(500)
+    .map(setGameCompleted);
 
 export default completedGame;

@@ -5,7 +5,7 @@ export const any = (...predicates) => action =>
 export const isMoveAction = action =>
   action.type === 'MOVE';
 
-export const isStartGameAction = action =>
+export const isSetNewGameAction = action =>
   action.type === 'SET_NEW_GAME';
 
 export const isSetBoardAction = action =>
