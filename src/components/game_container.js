@@ -18,10 +18,8 @@ type Props = {
 class Game extends Component {
 
   componentDidMount() {
-    const dispatch = this.props.dispatch;
     const gameType = this.props.location.query.gameType;
-
-    dispatch(setNewGame(gameType));
+    this.props.dispatch(setNewGame(gameType));
   }
 
   props: Props

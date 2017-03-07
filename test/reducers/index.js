@@ -4,9 +4,11 @@ const rootReducer = require('../../src/reducers').default;
 const { EMPTY_BOARD } = require('../../src/board');
 const {
   getActivePlayer,
+  getActivePlayerType,
   getNextPlayer,
   isHumanPlayer,
   getWinner,
+  isGameCompleted,
 } = require('../../src/reducers');
 // const { setNewGame, reset } = require('../../src/action_creators');
 
@@ -118,5 +120,26 @@ test('getWinner returns 1 if player 1 wins', (t) => {
 
 test('getWinner returns 2 if player 2 wins', (t) => {
   t.equal(getWinner(makeState(boardD)), 2);
+  t.end();
+});
+
+test('isGameCompleted returns false if not completed', (t) => {
+  t.false(isGameCompleted(makeState()));
+  t.end();
+});
+
+test('isGameCompleted returns true if completed', (t) => {
+  t.true(isGameCompleted(makeState(undefined, undefined, true)));
+  t.end();
+});
+
+test('getActivePlayerType returns true if completed', (t) => {
+  t.true(isGameCompleted(makeState(undefined, undefined, true)));
+  t.end();
+});
+
+test('getActivePlayerType, given non-null game type returns player type of specified player', (t) => {
+  t.equal(getActivePlayerType(makeState(boardA, 'COMPUTER_HUMAN', true)), 'HUMAN');
+  t.equal(getActivePlayerType(makeState(boardA, 'HUMAN_COMPUTER', true)), 'COMPUTER');
   t.end();
 });
