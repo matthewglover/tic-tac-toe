@@ -16,6 +16,16 @@ const GAME_LINKS = [
   { gameType: 'COMPUTER_COMPUTER', description: 'Computer vs Computer' },
 ];
 
+const style = {
+  container: {
+    height: '300px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+};
+
 export class ChooseGame extends Component {
 
   componentDidMount() {
@@ -28,11 +38,9 @@ export class ChooseGame extends Component {
 
   render() {
     return (
-      <div>Choose a game
-        <ul>
-          {GAME_LINKS.map((props, i) =>
-            <GameLink key={i} {...props} />)}
-        </ul>
+      <div style={style.container}>
+        {GAME_LINKS.map((props, i) =>
+          <GameLink key={i} {...props} />)}
       </div>);
   }
 }

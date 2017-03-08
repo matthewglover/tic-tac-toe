@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from 'rebass';
 import { connect } from 'react-redux';
 import * as fromReducers from '../reducers';
 import { isWinner } from '../board';
@@ -8,15 +9,38 @@ export type PropTypes = {
   winner: BoardStatus
 }
 
-export const GameOver = ({ winner }: PropTypes) =>
-  <div>
-    {isWinner(winner)
-      ? `Player ${winner} wins!`
-      : 'It\'s a draw!'}<br />
+const style = {
+  container: {
+    height: '300px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+  resultText: {
+    fontSize: '1.6em',
+  },
+  button: {
+    width: '200px',
+    textAlign: 'center',
+  },
+};
 
-    <Link to="/">
+
+export const GameOver = ({ winner }: PropTypes) =>
+  <div style={style.container}>
+    <div style={style.resultText}>{isWinner(winner)
+      ? `Player ${winner} wins!`
+      : 'It\'s a draw!'}</div>
+    <Button
+      to="/"
+      is={Link}
+      backgroundColor="white"
+      color="LightSlateGray"
+      style={style.button}
+    >
       Play again
-    </Link>
+    </Button>
   </div>;
 
 const mapStateToProps = state =>
