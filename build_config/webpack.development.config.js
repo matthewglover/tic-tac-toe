@@ -1,5 +1,8 @@
+const { resolve } = require('path');
 const webpack = require('webpack');
 const shared = require('./shared');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = {
   entry: [
@@ -29,7 +32,9 @@ module.exports = {
   module: shared.module,
 
   plugins: [
-    ...shared.plugins,
+    new HtmlWebpackPlugin({
+      template: resolve(__dirname, '../src/index.dev.html.ejs'),
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
   ],
