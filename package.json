@@ -11,6 +11,7 @@
     "docs:build": "documentation build ./src/**/*.js -f md > docs.md",
     "lint": "eslint './**/*.js'",
     "precommit": "npm run lint && npm run flow && nyc npm test && npm run coverage",
+    "postinstall": "npm run build",
     "report": "nyc report --reporter=lcov",
     "test": "npm run test:basic | tap-nyan",
     "test:basic": "NODE_ENV=test tape -r ./tests.config.js './test/**/*.js'",
