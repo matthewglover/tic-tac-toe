@@ -1,5 +1,8 @@
+const { resolve } = require('path');
 const webpack = require('webpack');
 const shared = require('./shared');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = {
   entry: {
@@ -24,7 +27,7 @@ module.exports = {
 
   output: {
     filename: '[chunkhash].[name].js',
-    path: shared.dist,
+    path: `${shared.dist}/public`,
   },
 
   context: shared.src,
@@ -34,7 +37,10 @@ module.exports = {
   module: shared.module,
 
   plugins: [
-    ...shared.plugins,
+    new HtmlWebpackPlugin({
+      template: resolve(__dirname, '../src/index.html.ejs'),
+      inject: false,
+    }),
     new webpack.optimize.CommonsChunkPlugin({
       names: [
         'vendorReact',
