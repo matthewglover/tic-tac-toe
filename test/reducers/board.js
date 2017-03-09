@@ -4,19 +4,20 @@ const boardReducer = require('../../src/reducers/board').default;
 const { move, setBoard, reset } = require('../../src/action_creators');
 
 
-test('boardReducer returns an empty board as initial state', (t) => {
+test('boardReducer', (t) => {
   t.deepEqual(
     boardReducer(undefined, { type: '@@INIT' }),
     [
       0, 0, 0,
       0, 0, 0,
       0, 0, 0,
-    ]);
+    ],
+    'given init action, returns empty board');
   t.end();
 });
 
 
-test('boardReducer, given a board action, returns a new board with move made', (t) => {
+test('boardReducer', (t) => {
   t.deepEqual(
     boardReducer(
       [
@@ -29,7 +30,8 @@ test('boardReducer, given a board action, returns a new board with move made', (
       0, 0, 1,
       0, 0, 0,
       0, 0, 0,
-    ]);
+    ],
+    'given move action, returns board with move made');
 
   t.deepEqual(
     boardReducer(
@@ -43,12 +45,13 @@ test('boardReducer, given a board action, returns a new board with move made', (
       0, 1, 0,
       0, 1, 0,
       2, 2, 0,
-    ]);
+    ],
+    'given move action, returns board with move made');
   t.end();
 });
 
 
-test('boardReducer, given a setBoard action, returns the board specified in setBoard action', (t) => {
+test('boardReducer', (t) => {
   const newBoard =
     [
       0, 1, 0,
@@ -60,11 +63,12 @@ test('boardReducer, given a setBoard action, returns the board specified in setB
     boardReducer(
       undefined,
       setBoard(newBoard)),
-    newBoard);
+    newBoard,
+    'given set board action, returns specified board');
   t.end();
 });
 
-test('boardReducer, given a reset action, returns an empty board', (t) => {
+test('boardReducer', (t) => {
   t.deepEqual(
     boardReducer(
       undefined,
@@ -73,6 +77,7 @@ test('boardReducer, given a reset action, returns an empty board', (t) => {
       0, 0, 0,
       0, 0, 0,
       0, 0, 0,
-    ]);
+    ],
+    'given reset action, returns empty board');
   t.end();
 });

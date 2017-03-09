@@ -23,9 +23,9 @@ test('GameContainer', (t) => {
       <GameContainer location={{ query: { gameType: 'COMPUTER_HUMAN' } }} />
     </Provider>);
 
-  t.true(dispatch.calledOnce);
-  t.deepEqual(dispatch.firstCall.args, [{ type: 'SET_NEW_GAME', gameType: 'COMPUTER_HUMAN' }]);
-  t.true(wrapper.contains(<Board />));
+  t.true(dispatch.calledOnce, 'on mount, when location.query != null, dispatches action');
+  t.deepEqual(dispatch.firstCall.args, [{ type: 'SET_NEW_GAME', gameType: 'COMPUTER_HUMAN' }], 'action is a SET_NEW_GAME, with gameType set to props.location.query.gameType');
+  t.true(wrapper.contains(<Board />), 'given game state of not completed, loads Board component');
   t.end();
 });
 
@@ -40,9 +40,9 @@ test('GameContainer', (t) => {
       </Provider>
     </MemoryRouter>);
 
-  t.true(dispatch.calledOnce);
-  t.deepEqual(dispatch.firstCall.args, [{ type: 'SET_NEW_GAME', gameType: 'HUMAN_COMPUTER' }]);
-  t.true(wrapper.contains(<Redirect to="/game_over" />));
+  t.true(dispatch.calledOnce, 'on mount, when location.query != null, dispatches action');
+  t.deepEqual(dispatch.firstCall.args, [{ type: 'SET_NEW_GAME', gameType: 'HUMAN_COMPUTER' }], 'action is a SET_NEW_GAME, with gameType set to props.location.query.gameType');
+  t.true(wrapper.contains(<Redirect to="/game_over" />), 'given game state of completed, loads Redirect component');
   t.end();
 });
 
@@ -57,7 +57,7 @@ test('GameContainer', (t) => {
       </Provider>
     </MemoryRouter>);
 
-  t.false(dispatch.called);
-  t.true(wrapper.contains(<Redirect to="/game_over" />));
+  t.false(dispatch.called, 'on mount, when location.query == null, no action dispatched');
+  t.true(wrapper.contains(<Redirect to="/game_over" />), 'given game state of not completed, loads Board component');
   t.end();
 });

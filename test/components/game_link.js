@@ -15,7 +15,7 @@ test('GameLink', (t) => {
     </MemoryRouter>);
 
   const linkProps = wrapper.find(Link).props();
-  t.deepEqual(linkProps.to, { pathname: '/game', query: { gameType: 'COMPUTER_HUMAN' } });
-  t.equal(linkProps.children, 'Computer vs Human');
+  t.deepEqual(linkProps.to, { pathname: '/game', query: { gameType: 'COMPUTER_HUMAN' } }, 'loads a Link component with query.gameType set to props.gameType');
+  t.equal(linkProps.children, 'Computer vs Human', 'loads a Link component with props.children (i.e. text) set to props.description');
   t.end();
 });

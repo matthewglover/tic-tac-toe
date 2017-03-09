@@ -35,7 +35,7 @@ test('move', (t) => {
   doMove(action$, store, 0)
     .subscribe(
       (action) => {
-        t.equal(action.type, 'SET_BOARD');
+        t.equal(action.type, 'SET_BOARD', 'given a move action and next player is computer, emits a SET_BOARD action');
         action$.complete();
       },
       noop,
@@ -51,7 +51,7 @@ test('move', (t) => {
   doMove(action$, store, 0)
     .subscribe(
       (action) => {
-        t.equal(action.type, 'SET_BOARD');
+        t.equal(action.type, 'SET_BOARD', 'given a move action and next player is computer, emits a SET_BOARD action');
         action$.complete();
       },
       noop,
@@ -68,7 +68,7 @@ test('move', (t) => {
   doMove(action$, store, 1)
     .subscribe(
       (action) => {
-        t.equal(action.type, 'SET_BOARD');
+        t.equal(action.type, 'SET_BOARD', 'given a move action and next player is computer, emits a SET_BOARD action');
         action$.complete();
       },
       noop,

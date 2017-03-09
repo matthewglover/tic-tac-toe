@@ -49,97 +49,82 @@ const boardD =
     0, 2, 1,
   ];
 
-test('rootReducer returns initial state', (t) => {
+test('rootReducer', (t) => {
   t.deepEqual(
     rootReducer(undefined, { type: '@@INIT' }),
-    makeState());
+    makeState(),
+    'returns initial state');
   t.end();
 });
 
-test('getActivePlayer returns current active player', (t) => {
+test('getActivePlayer', (t) => {
   t.equal(
     getActivePlayer(makeState()),
-    1);
+    1,
+    'returns current active player');
   t.equal(
     getActivePlayer(makeState(boardA)),
-    2);
+    2,
+    'returns current active player');
   t.equal(
     getActivePlayer(makeState(boardB)),
-    1);
+    1,
+    'returns current active player');
   t.equal(
     getActivePlayer(makeState(boardC)),
-    2);
+    2,
+    'returns current active player');
   t.end();
 });
 
-test('getNextPlayer returns next player', (t) => {
+test('getNextPlayer', (t) => {
   t.equal(
     getNextPlayer(makeState()),
-    2);
+    2,
+    'returns next player');
   t.equal(
     getNextPlayer(makeState(boardA)),
-    1);
+    1,
+    'returns next player');
   t.equal(
     getNextPlayer(makeState(boardB)),
-    2);
+    2,
+    'returns next player');
   t.equal(
     getNextPlayer(makeState(boardC)),
-    1);
+    1,
+    'returns next player');
   t.end();
 });
 
-test('isHumanPlayer returns true if player is human', (t) => {
-  t.true(isHumanPlayer(makeState(undefined, 'HUMAN_COMPUTER')));
-  t.true(isHumanPlayer(makeState(boardA, 'COMPUTER_HUMAN')));
+test('isHumanPlayer', (t) => {
+  t.true(isHumanPlayer(makeState(undefined, 'HUMAN_COMPUTER')), 'returns true if player is human');
+  t.true(isHumanPlayer(makeState(boardA, 'COMPUTER_HUMAN')), 'returns true if player is human');
+  t.false(isHumanPlayer(makeState(undefined, 'COMPUTER_HUMAN')), 'returns false if player is computer');
+  t.false(isHumanPlayer(makeState(boardA, 'HUMAN_COMPUTER')), 'returns false if player is computer');
+  t.false(isHumanPlayer(makeState()), 'returns false if gameType is null');
+  t.false(isHumanPlayer(makeState(boardA)), 'returns false if gameType is null');
   t.end();
 });
 
-test('isHumanPlayer returns false if player is computer', (t) => {
-  t.false(isHumanPlayer(makeState(undefined, 'COMPUTER_HUMAN')));
-  t.false(isHumanPlayer(makeState(boardA, 'HUMAN_COMPUTER')));
+test('getWinner', (t) => {
+  t.equal(getWinner(makeState()), 0, 'returns 0 if no winner');
+  t.equal(getWinner(makeState(boardA)), 0, 'returns 0 if no winner');
+  t.equal(getWinner(makeState(boardB)), 0, 'returns 0 if no winner');
+  t.equal(getWinner(makeState(boardC)), 1, 'returns 1 if player 1 wins');
+  t.equal(getWinner(makeState(boardD)), 2, 'returns 2 if player 2 wins');
   t.end();
 });
 
-test('isHumanPlayer returns false if gameType is null', (t) => {
-  t.false(isHumanPlayer(makeState()));
-  t.false(isHumanPlayer(makeState(boardA)));
+test('isGameCompleted', (t) => {
+  t.false(isGameCompleted(makeState()), 'returns false if not completed');
+  t.true(isGameCompleted(makeState(undefined, undefined, true)), 'returns true if completed');
   t.end();
 });
 
-test('getWinner returns 0 if no winner', (t) => {
-  t.equal(getWinner(makeState()), 0);
-  t.equal(getWinner(makeState(boardA)), 0);
-  t.equal(getWinner(makeState(boardB)), 0);
-  t.end();
-});
-
-test('getWinner returns 1 if player 1 wins', (t) => {
-  t.equal(getWinner(makeState(boardC)), 1);
-  t.end();
-});
-
-test('getWinner returns 2 if player 2 wins', (t) => {
-  t.equal(getWinner(makeState(boardD)), 2);
-  t.end();
-});
-
-test('isGameCompleted returns false if not completed', (t) => {
-  t.false(isGameCompleted(makeState()));
-  t.end();
-});
-
-test('isGameCompleted returns true if completed', (t) => {
-  t.true(isGameCompleted(makeState(undefined, undefined, true)));
-  t.end();
-});
-
-test('getActivePlayerType returns true if completed', (t) => {
-  t.true(isGameCompleted(makeState(undefined, undefined, true)));
-  t.end();
-});
-
-test('getActivePlayerType, given non-null game type returns player type of specified player', (t) => {
-  t.equal(getActivePlayerType(makeState(boardA, 'COMPUTER_HUMAN', true)), 'HUMAN');
-  t.equal(getActivePlayerType(makeState(boardA, 'HUMAN_COMPUTER', true)), 'COMPUTER');
+test('getActivePlayerType', (t) => {
+  t.true(isGameCompleted(makeState(undefined, undefined, true)), 'returns true if completed');
+  t.equal(getActivePlayerType(makeState(boardA, 'COMPUTER_HUMAN', true)), 'HUMAN', 'given non-null game type returns player type of specified player');
+  t.equal(getActivePlayerType(makeState(boardA, 'HUMAN_COMPUTER', true)), 'COMPUTER', 'given non-null game type returns player type of specified player');
   t.end();
 });

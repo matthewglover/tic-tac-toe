@@ -26,7 +26,10 @@ test('completedGame', (t) => {
   doCompletedGame(action$, store, 0)
     .subscribe(
       (action) => {
-        t.deepEqual(action, { type: 'SET_GAME_COMPLETED', completed: true });
+        t.deepEqual(
+          action,
+          { type: 'SET_GAME_COMPLETED', completed: true },
+          'given move action and a completed state.board, emits a SET_GAME_COMPLETED action');
         action$.complete();
       },
       noop,
@@ -42,7 +45,10 @@ test('completedGame', (t) => {
   doCompletedGame(action$, store, 0)
     .subscribe(
       (action) => {
-        t.deepEqual(action, { type: 'SET_GAME_COMPLETED', completed: true });
+        t.deepEqual(
+          action,
+          { type: 'SET_GAME_COMPLETED', completed: true },
+          'given a SET_BOARD action and a completed state.board, emits a SET_GAME_COMPLETED action');
         action$.complete();
       },
       noop,

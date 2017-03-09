@@ -5,37 +5,40 @@ const { getPlayerType } = require('../../src/reducers/game');
 const { setNewGame, reset } = require('../../src/action_creators');
 
 
-test('gameReducer returns null as initial state', (t) => {
+test('gameReducer', (t) => {
   t.equal(
     gameReducer(undefined, { type: '@@INIT' }),
-    null);
+    null,
+    'returns null as initial state');
   t.end();
 });
 
-test('gameReducer, given reset action, returns null', (t) => {
+test('gameReducer', (t) => {
   t.equal(
     gameReducer('HUMAN_HUMAN', reset()),
-    null);
+    null,
+    'given reset action, returns null');
   t.end();
 });
 
-test('gameReducer, given setNewGame action, returns specified game type', (t) => {
+test('gameReducer', (t) => {
   t.equal(
     gameReducer(null, setNewGame('HUMAN_COMPUTER')),
-    'HUMAN_COMPUTER');
+    'HUMAN_COMPUTER',
+    'given setNewGame action, returns specified game type');
   t.end();
 });
 
-test('getPlayerType, given game type of null returns null and a player', (t) => {
-  t.equal(getPlayerType(null, 1), null);
-  t.equal(getPlayerType(null, 2), null);
+test('getPlayerType', (t) => {
+  t.equal(getPlayerType(null, 1), null, 'given game type of null returns null and a player');
+  t.equal(getPlayerType(null, 2), null, 'given game type of null returns null and a player');
   t.end();
 });
 
-test('getPlayerType, given non-null game type returns player type of specified player', (t) => {
-  t.equal(getPlayerType('HUMAN_COMPUTER', 1), 'HUMAN');
-  t.equal(getPlayerType('COMPUTER_HUMAN', 1), 'COMPUTER');
-  t.equal(getPlayerType('COMPUTER_HUMAN', 2), 'HUMAN');
-  t.equal(getPlayerType('HUMAN_COMPUTER', 2), 'COMPUTER');
+test('getPlayerType', (t) => {
+  t.equal(getPlayerType('HUMAN_COMPUTER', 1), 'HUMAN', 'given non-null game type returns player type of specified player');
+  t.equal(getPlayerType('COMPUTER_HUMAN', 1), 'COMPUTER', 'given non-null game type returns player type of specified player');
+  t.equal(getPlayerType('COMPUTER_HUMAN', 2), 'HUMAN', 'given non-null game type returns player type of specified player');
+  t.equal(getPlayerType('HUMAN_COMPUTER', 2), 'COMPUTER', 'given non-null game type returns player type of specified player');
   t.end();
 });
