@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
+import throttle from 'lodash.throttle';
 import { loadState, saveState, isErrorState } from './local_storage';
 import rootReducer from './reducers';
 import rootEpic from './epics';
@@ -24,9 +25,8 @@ const getPersistedState = (): Object => {
 };
 
 
-const saveStateToLocalStorage = (state) => {
-  saveState(state);
-};
+const saveStateToLocalStorage =
+  throttle(saveState, 500);
 
 
 const store =
