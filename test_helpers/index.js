@@ -1,4 +1,5 @@
 const { jsdom } = require('jsdom');
+const { LocalStorage } = require('node-localstorage');
 
 const setupDom = () => {
   global.document = jsdom('');
@@ -20,6 +21,11 @@ const provisionStoreFaker = ({ dispatch = identity }) => state =>
     dispatch,
     getState() { return state; },
   });
+
+const setupLocalStorage = () => {
+  global.localStorage = new LocalStorage('');
+  global.window.localStorage = global.localStorage;
+};
 
 
 const DEFAULT_BOARD =
@@ -43,4 +49,5 @@ module.exports = {
   setupDom,
   provisionStoreFaker,
   makeState,
+  setupLocalStorage,
 };
