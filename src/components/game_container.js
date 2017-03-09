@@ -5,11 +5,14 @@ import { connect } from 'react-redux';
 import { setNewGame } from '../action_creators';
 import Board from './board';
 
+
+type LocationQuery = {
+  gameType: GameType,
+};
+
 type Props = {
   location: {
-    query: {
-      gameType: GameType,
-    },
+    query: ?LocationQuery,
   },
   dispatch: Function,
   gameCompleted: boolean
@@ -18,6 +21,7 @@ type Props = {
 class Game extends Component {
 
   componentDidMount() {
+    if (this.props.location.query == null) return;
     const gameType = this.props.location.query.gameType;
     this.props.dispatch(setNewGame(gameType));
   }

@@ -45,3 +45,19 @@ test('GameContainer', (t) => {
   t.true(wrapper.contains(<Redirect to="/game_over" />));
   t.end();
 });
+
+test('GameContainer', (t) => {
+  dispatch.reset();
+  const store = fakeStore(makeState({ gameCompleted: true }));
+
+  const wrapper = mount(
+    <MemoryRouter>
+      <Provider store={store}>
+        <GameContainer location={{ query: null }} />
+      </Provider>
+    </MemoryRouter>);
+
+  t.false(dispatch.called);
+  t.true(wrapper.contains(<Redirect to="/game_over" />));
+  t.end();
+});
