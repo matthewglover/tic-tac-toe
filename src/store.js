@@ -1,10 +1,12 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
+import throttle from 'lodash.throttle';
+import { loadState, saveState, isErrorState } from './local_storage';
 import rootReducer from './reducers';
-
 import rootEpic from './epics';
 
 const epicMiddleware = createEpicMiddleware(rootEpic);
+
 
 /* eslint-disable no-underscore-dangle */
 const composeEnhancers =
@@ -14,10 +16,27 @@ const composeEnhancers =
 /* eslint-enable */
 
 
+const getPersistedState = (): Object => {
+  const state = loadState();
+
+  return isErrorState(state) || state === undefined
+    ? {}
+    : state;
+};
+
+
+const saveStateToLocalStorage =
+  throttle(saveState, 500);
+
+
 const store =
   createStore(
     rootReducer,
-    {},
+    getPersistedState(),
     composeEnhancers(applyMiddleware(epicMiddleware)));
+
+
+store.subscribe(() => saveStateToLocalStorage(store.getState()));
+
 
 export default store;
