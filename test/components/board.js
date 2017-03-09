@@ -29,7 +29,7 @@ test('Board', (t) => {
   const squares = wrapper.find(Square);
 
   squares.forEach((square) => {
-    t.true(square.matchesElement(<Square value={null} />));
+    t.true(square.matchesElement(<Square value={null} />), 'given empty board state, square has value of null');
   });
 
   t.end();
@@ -53,8 +53,8 @@ test('Board', (t) => {
 
   const squares = wrapper.find(Square);
 
-  t.equal(squares.at(5).props().value, 'X');
-  t.equal(squares.at(7).props().value, 'O');
+  t.equal(squares.at(5).props().value, 'X', 'square at position Left Center has value of X');
+  t.equal(squares.at(7).props().value, 'O', 'square at position Middle Bottom has value of O');
 
   t.end();
 });

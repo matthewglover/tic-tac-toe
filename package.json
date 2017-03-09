@@ -13,9 +13,9 @@
     "precommit": "npm run lint && npm run flow && nyc npm test && npm run coverage",
     "postinstall": "npm run build",
     "report": "nyc report --reporter=lcov",
-    "test": "npm run test:basic | tap-nyan",
+    "test": "npm run test:basic | tap-spec",
     "test:basic": "NODE_ENV=test tape -r ./tests.config.js './test/**/*.js'",
-    "test:watch": "nodemon -q -x 'npm run test:basic | faucet'",
+    "test:watch": "nodemon -q -x 'npm run test:basic | tap-spec'",
     "test:watch-debug": "nodemon -q -x 'npm run test:basic'"
   },
   "repository": {
@@ -59,7 +59,7 @@
     "sinon": "^1.17.7",
     "style-loader": "0.13.1",
     "tap-dot": "^1.0.5",
-    "tap-nyan": "^1.1.0",
+    "tap-spec": "^4.1.1",
     "tape": "^4.6.2",
     "webpack": "2.2.0-rc.2",
     "webpack-dev-server": "2.2.0-rc.0"

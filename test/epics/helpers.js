@@ -30,21 +30,21 @@ const nullAction = {
 };
 
 test('isMoveAction', (t) => {
-  t.true(isMoveAction(moveAction));
-  t.false(isMoveAction(setNewGameAction));
+  t.true(isMoveAction(moveAction), 'returns true for valid move action');
+  t.false(isMoveAction(setNewGameAction), 'returns false if not valid move action');
   t.end();
 });
 
 
 test('isSetNewGameAction', (t) => {
-  t.true(isSetNewGameAction(setNewGameAction));
-  t.false(isSetNewGameAction(moveAction));
+  t.true(isSetNewGameAction(setNewGameAction), 'returns true for valid set new game action');
+  t.false(isSetNewGameAction(moveAction), 'returns false if not valid set new game action');
   t.end();
 });
 
 test('isSetBoardAction', (t) => {
-  t.true(isSetBoardAction(setBoardAction));
-  t.false(isSetBoardAction(moveAction));
+  t.true(isSetBoardAction(setBoardAction), 'returns true for valid set board action');
+  t.false(isSetBoardAction(moveAction), 'returns false if not valid set board action');
   t.end();
 });
 
@@ -52,9 +52,9 @@ test('any', (t) => {
   const isTestAction =
     any(isMoveAction, isSetNewGameAction, isSetBoardAction);
 
-  t.true(isTestAction(setBoardAction));
-  t.true(isTestAction(setNewGameAction));
-  t.true(isTestAction(setBoardAction));
-  t.false(isTestAction(nullAction));
+  t.true(isTestAction(setBoardAction), 'returns true if any predicate returns true');
+  t.true(isTestAction(setNewGameAction), 'returns true if any predicate returns true');
+  t.true(isTestAction(setBoardAction), 'returns true if any predicate returns true');
+  t.false(isTestAction(nullAction), 'returns false if all predicates return false');
   t.end();
 });

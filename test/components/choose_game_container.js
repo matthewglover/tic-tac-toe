@@ -32,7 +32,7 @@ test('ChooseGameContainer', (t) => {
     </MemoryRouter>);
 
   t.true(dispatch.calledOnce);
-  t.deepEqual(dispatch.firstCall.args, [{ type: 'RESET' }]);
+  t.deepEqual(dispatch.firstCall.args, [{ type: 'RESET' }], 'on mount, dispatches a reset action');
   t.end();
 });
 
@@ -48,9 +48,9 @@ test('ChooseGameContainer', (t) => {
     </MemoryRouter>);
 
   const links = wrapper.find(GameLink);
-  t.equal(links.length, 4);
+  t.equal(links.length, 4, 'displays four GameLink components');
   links.forEach((link, i) => {
-    t.equal(link.text(), TEXT_LINKS[i]);
+    t.equal(link.text(), TEXT_LINKS[i], `displays ${TEXT_LINKS[i]} at position ${i}`);
   });
   t.end();
 });

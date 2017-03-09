@@ -4,30 +4,34 @@ const gameCompletedReducer = require('../../src/reducers/game_completed').defaul
 const { setGameCompleted, reset } = require('../../src/action_creators');
 
 
-test('gameCompletedReducer returns false as initial state', (t) => {
+test('gameCompletedReducer', (t) => {
   t.equal(
     gameCompletedReducer(undefined, { type: '@@INIT' }),
-    false);
+    false,
+    'returns false as initial state');
   t.end();
 });
 
-test('gameCompletedReducer, given reset action, returns false', (t) => {
+test('gameCompletedReducer', (t) => {
   t.equal(
     gameCompletedReducer(true, reset()),
-    false);
+    false,
+    'given reset action, returns false');
   t.end();
 });
 
-test('gameCompletedReducer, given setGameCompleted action of true, returns true', (t) => {
+test('gameCompletedReducer', (t) => {
   t.equal(
     gameCompletedReducer(false, setGameCompleted(true)),
-    true);
+    true,
+    'given setGameCompleted action of true, returns true');
   t.end();
 });
 
-test('gameCompletedReducer, given setGameCompleted action of false, returns false', (t) => {
+test('gameCompletedReducer', (t) => {
   t.equal(
     gameCompletedReducer(true, setGameCompleted(false)),
-    false);
+    false,
+    'given setGameCompleted action of false, returns false');
   t.end();
 });
