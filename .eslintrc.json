@@ -25,7 +25,10 @@
     "SetGameCompletedAction": true,
     "ResetAction": true,
     "SquareDisplayValue": true,
-    "BoardStatus": true
+    "BoardStatus": true,
+    "Alpha": true,
+    "Beta": true,
+    "AlphaBetaResult": true
   },
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]

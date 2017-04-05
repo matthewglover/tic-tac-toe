@@ -1,9 +1,9 @@
 const test = require('tape');
-const mod = require('../../src/logic/mini_max');
+const mod = require('../../src/logic/alpha_beta');
 
-const miniMax = mod.default;
+const alphaBeta = mod.default;
 
-test('miniMax', (t) => {
+test('alphaBeta', (t) => {
   const board = [
     2, 1, 2,
     2, 1, 2,
@@ -11,7 +11,7 @@ test('miniMax', (t) => {
   ];
 
   t.deepEqual(
-    miniMax(board).slice(0, 2),
+    alphaBeta(board).slice(0, 2),
     [
       10,
       [
@@ -24,7 +24,7 @@ test('miniMax', (t) => {
   t.end();
 });
 
-test('miniMax', (t) => {
+test('alphaBeta', (t) => {
   const board = [
     2, 1, 0,
     2, 1, 0,
@@ -32,7 +32,7 @@ test('miniMax', (t) => {
   ];
 
   t.deepEqual(
-    miniMax(board, 1).slice(0, 2),
+    alphaBeta(board, 1).slice(0, 2),
     [
       -10,
       [
@@ -45,7 +45,7 @@ test('miniMax', (t) => {
   t.end();
 });
 
-test('miniMax', (t) => {
+test('alphaBeta', (t) => {
   const board = [
     2, 1, 2,
     2, 1, 1,
@@ -53,7 +53,7 @@ test('miniMax', (t) => {
   ];
 
   t.deepEqual(
-    miniMax(board, 1).slice(0, 2),
+    alphaBeta(board, 1).slice(0, 2),
     [
       0,
       [
@@ -66,7 +66,7 @@ test('miniMax', (t) => {
   t.end();
 });
 
-test('miniMax', (t) => {
+test('alphaBeta', (t) => {
   const board = [
     2, 1, 0,
     2, 1, 2,
@@ -74,7 +74,7 @@ test('miniMax', (t) => {
   ];
 
   t.deepEqual(
-    miniMax(board, false).slice(0, 2),
+    alphaBeta(board, false).slice(0, 2),
     [
       10,
       [
@@ -87,7 +87,7 @@ test('miniMax', (t) => {
   t.end();
 });
 
-test('miniMax', (t) => {
+test('alphaBeta', (t) => {
   const board = [
     2, 1, 2,
     1, 2, 1,
@@ -95,7 +95,7 @@ test('miniMax', (t) => {
   ];
 
   t.deepEqual(
-    miniMax(board, 1, false).slice(0, 2),
+    alphaBeta(board, 1, false).slice(0, 2),
     [
       0,
       [
@@ -108,7 +108,7 @@ test('miniMax', (t) => {
   t.end();
 });
 
-test('miniMax', (t) => {
+test('alphaBeta', (t) => {
   const board = [
     2, 1, 2,
     1, 2, 1,
@@ -116,7 +116,7 @@ test('miniMax', (t) => {
   ];
 
   t.deepEqual(
-    miniMax(board, 2).slice(0, 2),
+    alphaBeta(board, 2).slice(0, 2),
     [
       9,
       [
@@ -129,7 +129,7 @@ test('miniMax', (t) => {
   t.end();
 });
 
-test('miniMax', (t) => {
+test('alphaBeta', (t) => {
   const board = [
     2, 1, 2,
     1, 2, 1,
@@ -137,7 +137,7 @@ test('miniMax', (t) => {
   ];
 
   t.deepEqual(
-    miniMax(board, 2).slice(0, 2),
+    alphaBeta(board, 2).slice(0, 2),
     [
       9,
       [
@@ -150,7 +150,7 @@ test('miniMax', (t) => {
   t.end();
 });
 
-test('miniMax', (t) => {
+test('alphaBeta', (t) => {
   const board = [
     2, 1, 2,
     1, 2, 0,
@@ -158,7 +158,7 @@ test('miniMax', (t) => {
   ];
 
   t.deepEqual(
-    miniMax(board, 1).slice(0, 2),
+    alphaBeta(board, 1).slice(0, 2),
     [
       0,
       [
@@ -171,7 +171,7 @@ test('miniMax', (t) => {
   t.end();
 });
 
-test('miniMax', (t) => {
+test('alphaBeta', (t) => {
   const board = [
     2, 0, 1,
     0, 0, 1,
@@ -179,7 +179,7 @@ test('miniMax', (t) => {
   ];
 
   t.deepEqual(
-    miniMax(board, 2).slice(0, 2),
+    alphaBeta(board, 2).slice(0, 2),
     [
       -6,
       [
