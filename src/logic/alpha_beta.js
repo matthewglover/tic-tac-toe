@@ -2,12 +2,12 @@
 import {
   getBoardStatus,
   getNextMoves,
-  getNextPlayer } from '../board';
+  getLastPlayer } from '../board';
 
 
 const getBoardScore = (board: Board, isMax: boolean, depth: number): Score => {
   const boardStatus = getBoardStatus(board);
-  const player = getNextPlayer(board);
+  const player = getLastPlayer(board);
 
   if (boardStatus === 0) return 0;
   if ((player === boardStatus && isMax) ||
@@ -63,12 +63,12 @@ const getBestMove =
 /* eslint-enable no-use-before-define */
 
 const calcAlpha = (isMax: boolean, score: number, crntAlpha: Alpha): Alpha =>
-  (!isMax && (score > crntAlpha)
+  (isMax && (score > crntAlpha)
     ? score
     : crntAlpha);
 
 const calcBeta = (isMax: boolean, score: number, crntBeta: Beta): Beta =>
-  (isMax && (score < crntBeta)
+  (!isMax && (score < crntBeta)
     ? score
     : crntBeta);
 
@@ -94,7 +94,7 @@ const alphaBeta =
     const moves = getNextMoves(board);
 
     return moves.length === 0
-      ? calcResult(board, isMax, depth, alpha, beta)
+      ? calcResult(board, !isMax, depth, alpha, beta)
       : getBestMove(moves, isMax, depth + 1, alpha, beta);
   };
 
