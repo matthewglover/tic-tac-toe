@@ -32,5 +32,3 @@ To run the app in development mode run `npm run dev`.
 To build the app for production run `npm run build`, then run `node server` to run via a local server.
 
 Alternatively view the demo app on heroku [here](https://matthewglover-tic-tac-toe.herokuapp.com).
-
-For more info see the [docs](docs.md).
