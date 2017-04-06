@@ -1,5 +1,5 @@
 import * as fromReducer from '../reducers';
-import miniMax from '../logic/mini_max';
+import alphaBeta from '../logic/alpha_beta';
 import { makeMove } from '../board';
 import * as fromActionCreators from '../action_creators';
 import {
@@ -9,7 +9,7 @@ import {
   isSetBoardAction } from './helpers';
 
 const calcNextBoard = (board) => {
-  const [, nextBoard] = miniMax(board);
+  const [, nextBoard] = alphaBeta(board);
   return nextBoard;
 };
 
