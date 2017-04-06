@@ -273,3 +273,6 @@ export const getOtherPlayer = (player: Player): Player =>
   (player === 1
     ? 2
     : 1);
+
+export const getLastPlayer = (board: Board): Player =>
+  getOtherPlayer(getNextPlayer(board));

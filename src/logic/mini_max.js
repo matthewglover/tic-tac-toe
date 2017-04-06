@@ -2,7 +2,7 @@
 import {
   getBoardStatus,
   getNextMoves,
-  getNextPlayer } from '../board';
+  getLastPlayer } from '../board';
 
 
 /**
@@ -15,7 +15,7 @@ import {
  */
 const getBoardScore = (board: Board, isMax: boolean, depth: number): Score => {
   const boardStatus = getBoardStatus(board);
-  const player = getNextPlayer(board);
+  const player = getLastPlayer(board);
 
   if (boardStatus === 0) return 0;
   if ((player === boardStatus && isMax) ||
@@ -78,7 +78,7 @@ const miniMax =
     const moves = getNextMoves(board);
 
     return moves.length === 0
-      ? [getBoardScore(board, isMax, depth), board]
+      ? [getBoardScore(board, !isMax, depth), board]
       : getBestMove(moves, isMax, depth + 1);
   };
 
