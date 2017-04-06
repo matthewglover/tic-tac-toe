@@ -84,10 +84,6 @@ const calcResult =
       calcBeta(isMax, score, beta)];
   };
 
-/**
- * Get best next move for current player.
- * Returns current board score and board if no more moves.
- */
 const alphaBeta =
   (board: Board, isMax: boolean = true, depth: number = 0,
     alpha: Alpha = -10, beta: Beta = 10): AlphaBetaResult => {
